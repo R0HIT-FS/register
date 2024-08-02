@@ -12,6 +12,7 @@
     "autoprefixer": "^10.4.19",
     "mongoose": "^8.5.1",
     "next": "14.2.5",
+    "node": "^20.16.0",
     "reacr": "^1.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
