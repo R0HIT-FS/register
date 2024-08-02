@@ -13,7 +13,7 @@ export async function PUT(request,{params}){
         const {id} = params;
         const {newName:name, newAge:age,newNumber:phone,newGender:gender,newPaid:paid} = await request.json();
         await connectToDb();
-       const updatedUser =  await User.findOneAndUpdate({_id:id},{name,age,phone,paid,gender}, { new: true });
+       const updatedUser =  await User.findByIdAndUpdate({_id:id},{name,age,phone,paid,gender}, { new: true });
         return NextResponse.json({message:updatedUser},{status:200})
 }
 
