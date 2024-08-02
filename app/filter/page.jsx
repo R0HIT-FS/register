@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const FilterByAge=async(minage,maxage)=>{
   try {
-    const res = await fetch(`http://localhost:3000/api/filter?minAge=${minage}&maxAge=${maxage}`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/filter?minAge=${minage}&maxAge=${maxage}`,{
       cache:"no-store"
     })
     if(!res.ok){

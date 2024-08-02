@@ -1,4 +1,3 @@
-// import { connectToDb } from "../../../lib/db";
 import { connectToDb } from "../../../lib/db";
 import User from "../../../models/User";
 import { NextResponse } from "next/server";
@@ -6,6 +5,7 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
   try {
     const { name, age, gender, paid, phone } = await request.json();
+    // await connectToDb();
     await connectToDb();
     let user = await User.create({
       name,
