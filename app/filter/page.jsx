@@ -79,7 +79,7 @@ const Page = async ({ searchParams }) => {
         Members between ages of {min} and {max} ({filteredUsers.length})
       </p> 
       <div className='px-10 py-5 flex flex-col md:flex-row flex-wrap gap-3'>
-        {filteredUsers.length > 0 ? 
+        {filteredUsers &&filteredUsers.length > 0 ? 
           filteredUsers.map((user) => (
             <p key={user._id} className='bg-[#E9C46A] text-center md:text-left text-sm md:text-lg capitalize whitespace-nowrap rounded-lg px-2 p-1'>
               {user.name} ({user.age})

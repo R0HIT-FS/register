@@ -51,7 +51,7 @@ const page = async ({ searchParams }) => {
         </Link>
       </div>
       <div className="min-h-screen relative flex flex-wrap-reverse md:flex-wrap items-end md:content-start  gap-4 justify-center">
-      {filteredMembers?.length>0?
+      {filteredMembers &&filteredMembers?.length>0?
             
             filteredMembers.map((user,i)=>{
                 return <MemberCard key={i} user={user}/>
