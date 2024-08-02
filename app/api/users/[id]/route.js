@@ -2,7 +2,7 @@ import { connectToDb } from "../../../../lib/db";
 import User from "../../../../models/User";
 import { NextResponse } from "next/server";
 const setCorsHeaders = (res) => {
-    res.headers.set('Access-Control-Allow-Origin', 'https://registration-kohl-ten.vercel.app'); // Your Vercel URL
+    res.headers.set('Access-Control-Allow-Origin', 'https://registration-kohl-ten.vercel.app'); 
     res.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
   };
@@ -22,9 +22,8 @@ export async function GET(request,{params}){
     setCorsHeaders(res);
     try {
         const {id} = params;
-        // console.log(id)
         await connectToDb();
-        const user = await User.findOne({_id:id});
+        const user = await User.findById({_id:id});
         return NextResponse.json(user,{status:200});
     } catch (error) {
         console.log(error)
