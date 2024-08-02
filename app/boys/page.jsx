@@ -10,11 +10,16 @@ const getBoys = async () => {
       cache: "no-store",
     });
     if (!res.ok) {
-      throw new Error("Failed to fetch boys");
+      throw new Error('Failed to fetch Boys');
     }
-    return res.json();
+
+    const data = await res.json();
+
+    // Ensure data is an array
+    return Array.isArray(data) ? data : [];
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    return []; // Return an empty array on error
   }
 };
 const page = async ({ searchParams }) => {

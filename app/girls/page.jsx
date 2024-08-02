@@ -10,12 +10,17 @@ const getGirls = async()=>{
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/girls`,{
       cache:"no-store"
     });
-    if(!res.ok){
-      throw new Error("Failed to fetch girls")
+    if (!res.ok) {
+      throw new Error('Failed to fetch Girls');
     }
-    return res.json();
+
+    const data = await res.json();
+
+    // Ensure data is an array
+    return Array.isArray(data) ? data : [];
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    return []; // Return an empty array on error
   }
 
 }

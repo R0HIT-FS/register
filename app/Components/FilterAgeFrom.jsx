@@ -18,8 +18,6 @@ const FilterAgeFrom = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("from:",ageFrom)
-    // console.log("to:",ageTo)
     const minAge = ageFrom || "1"
     const maxAge = ageTo || "100"
     replace(`${pathname}?minAge=${minAge.toString()}&maxAge=${maxAge.toString()}`)
