@@ -42,7 +42,7 @@ export async function GET(){
    }
 }
 
-export async function DELETE(){
+export async function DELETE(request){
   const res = NextResponse.next(); // Create a response object
   setCorsHeaders(res);
     try {
