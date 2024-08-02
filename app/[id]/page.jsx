@@ -29,7 +29,7 @@ const page = async({params}) => {
         <div>
         </div>
         <div className=' p-4 rounded-lg  bg-white bg-opacity-20 backdrop-filter shadow-lg'>
-            <h1 className='uppercase text-xl md:text-xl font-extrabold'>{data.name}</h1>
+            <h1 className='uppercase text-xl md:text-xl font-extrabold'>{data?.name}</h1>
         <p className='font-semibold text-md md:text-lg'>ID : <span className='capitalize font-normal'>{data?._id}</span></p>
         <p className='font-semibold text-md md:text-lg'>Age : <span className='capitalize font-normal'>{data?.age}</span></p>
         <p className='font-semibold text-md md:text-lg'>Gender : <span className='capitalize font-normal'>{data?.gender}</span></p>
