@@ -3,7 +3,6 @@ import React from "react";
 
 import { MdEdit } from "react-icons/md";
 import DeleteButton from "./DeleteButton";
-import Image from "next/image";
 
 
 // const getImage = async()=>{

@@ -48,7 +48,7 @@ export async function DELETE(request){
     try {
         const id = request.nextUrl.searchParams.get("id");
         await connectToDb();
-        let user = await User.findByIdAndDelete({_id:id})
+        let user = await User.deleteOne({_id:id})
         return NextResponse.json({message:user},{status:200});
     } catch (error) {
         console.log(error)
