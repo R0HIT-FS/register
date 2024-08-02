@@ -33,7 +33,7 @@ const EditForm = ({data}) => {
             if(phone.length<10 || age<0){
                     alert("Contact No. or Age Invalid!")
             }else{
-                const res = await fetch(`http://localhost:3000/api/users/${data._id}`,{
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${data._id}`,{
                     method:"PUT",
                     headers:{
                         "Content-type":"application/json"

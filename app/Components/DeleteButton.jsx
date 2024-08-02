@@ -8,7 +8,7 @@ const DeleteButton = ({id}) => {
     const del=async()=>{
         const confirmed = confirm("Are you sure you want to delete this member?")
         if(confirmed){
-            await fetch(`http://localhost:3000/api/users?id=${id}`,{
+            await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?id=${id}`,{
                 method:"DELETE"
             })
         }
