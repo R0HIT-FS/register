@@ -27,14 +27,15 @@ const page = () => {
 
 
         try {
+
             const phone = document.getElementById("phone").value
             const age = document.getElementById("age").value
-            // console.log(phone,age)
+            console.log(process.env.NEXT_PUBLIC_API_URL)
             if(phone.length<10 || age<0){
                     alert("Contact No. or Age Invalid!")
             }
             else{
-                const res = await fetch("http://localhost:3000/api/users",{
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`,{
                     method:"POST",
                     headers:{
                         "Content-type":"application/json"

@@ -2,7 +2,15 @@ import { connectToDb } from "../../../lib/db";
 import User from "../../../models/User";
 import { NextResponse } from "next/server";
 
+
+const setCorsHeaders = (res) => {
+  res.headers.set('Access-Control-Allow-Origin', 'https://registration-kohl-ten.vercel.app'); // Your Vercel URL
+  res.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+};
 export async function POST(request) {
+  const res = NextResponse.next(); 
+  setCorsHeaders(res);
   try {
     const { name, age, gender, paid, phone } = await request.json();
     // await connectToDb();
@@ -22,6 +30,8 @@ export async function POST(request) {
 }
 
 export async function GET(){
+  const res = NextResponse.next(); 
+  setCorsHeaders(res);
    try {
      await connectToDb();
      let users = await User.find();
@@ -32,7 +42,9 @@ export async function GET(){
    }
 }
 
-export async function DELETE(request){
+export async function DELETE(){
+  const res = NextResponse.next(); // Create a response object
+  setCorsHeaders(res);
     try {
         const id = request.nextUrl.searchParams.get("id");
         await connectToDb();
