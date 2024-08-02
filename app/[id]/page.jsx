@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const getUser=async(id)=>{
     try {
-        const res = await fetch(`http://localhost:3000/api/users/${id}`,{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${id}`,{
             cache:"no-store"
         })
         if(!res.ok){
