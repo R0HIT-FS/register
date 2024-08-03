@@ -1,9 +1,13 @@
 "use client"
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+
+
 
 export default function DeleteCollection() {
     const [collectionName, setCollectionName] = useState('');
     const [message, setMessage] = useState('');
+    const router = useRouter();
 
     const handleDelete = async () => {
         const confirmed = confirm("Do you want to delete all data")
@@ -20,6 +24,9 @@ export default function DeleteCollection() {
                 const data = await response.json();
                 if (response.ok) {
                     setMessage(data.message);
+                    router.refresh()
+                    router.replace("/")
+                    alert("All Data Deleted")
                 } else {
                     setMessage(data.error || data.message);
                 }
@@ -44,7 +51,7 @@ export default function DeleteCollection() {
                  className='px-4 py-2 rounded-lg border-2 border-zinc-300'
             />
             <button className='px-4 py-2 rounded-lg bg-red-500 text-white' onClick={handleDelete}>Delete Collection</button>
-            {message && <p className='font-normal'>{message}</p>}
+            {message && <p className='font-medium text-gray-500'>{message}</p>}
         </div>
     );
 }
