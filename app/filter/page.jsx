@@ -76,7 +76,7 @@ const Page = async ({ searchParams }) => {
     <div className='p-10 min-h-screen'>
       <FilterAgeFrom />
       <p className='text-left font-semibold mt-4 px-10'>
-        Members between ages of {min} and {max} ({filteredUsers.length})
+      ({filteredUsers.length}) Members found between the ages of {min} and {max} 
       </p> 
       <div className='px-10 py-5 flex flex-col md:flex-row flex-wrap gap-3'>
         {filteredUsers &&filteredUsers.length > 0 ? 
