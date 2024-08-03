@@ -26,8 +26,9 @@ const page = async ({ searchParams }) => {
   const data = await getBoys();
   const query = searchParams?.query || "";
   // console.log(query);
+  const boys = data.filter((boy)=>boy.gender.toLowerCase()=="male")
 
-  const filteredMembers = data.filter((member) =>
+  const filteredMembers = boys.filter((member) =>
     member.name.toLowerCase().includes(query.toLowerCase())
   );
   return (
@@ -54,7 +55,7 @@ const page = async ({ searchParams }) => {
           </small>
         </Link>
         <small className="md:text-md font-semibold px-4 py-1 bg-blue-500 text-white rounded-full">
-          Boys({data?.length})
+          Boys({boys?.length})
         </small>
         <Link href={"/girls"}>
           <small className="px-4 py-1 rounded-full bg-pink-500 text-white">
@@ -62,7 +63,7 @@ const page = async ({ searchParams }) => {
           </small>
         </Link>
       </div>
-      <div className="min-h-screen relative flex flex-wrap-reverse md:flex-wrap items-end md:content-start gap-4 justify-center">
+      <div className="min-h-screen relative flex flex-wrap-reverse md:flex-wrap items-end content-end md:content-start gap-4 justify-center">
         {filteredMembers.length > 0 ? (
           filteredMembers.map((user, i) => {
             return <MemberCard key={i} user={user} />;

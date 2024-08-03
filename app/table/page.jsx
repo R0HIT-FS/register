@@ -24,7 +24,7 @@ const getMembers = async () => {
 const page = async ({ searchParams }) => {
   const data = await getMembers();
   const query = searchParams?.query || "";
-  // console.log(query);
+  
 
   const filteredMembers = data.filter((member) =>
     member.name.toLowerCase().includes(query.toLowerCase())

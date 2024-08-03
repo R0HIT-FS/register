@@ -128,7 +128,7 @@ const Page = async ({ searchParams }) => {
           <small className="px-4 py-1 rounded-full bg-pink-500 text-white">Girls</small>
         </Link>
       </div>
-      <div className="min-h-screen relative flex flex-wrap-reverse md:flex-wrap items-end md:content-start gap-4 justify-center">
+      <div className="min-h-screen relative flex flex-wrap-reverse md:flex-wrap items-end content-end md:content-start gap-4 justify-center">
         {filteredMembers.length > 0 ? (
           filteredMembers.map((user, i) => <MemberCard key={i} user={user} />)
         ) : (

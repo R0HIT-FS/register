@@ -24,13 +24,11 @@ const getMembers = async () => {
 const page = async ({ searchParams }) => {
   const data = await getMembers();
   const query = searchParams?.query || "";
-  // console.log(query);
 
-  const filteredMembers = data.filter((member) =>
+  const boys = data.filter((boy)=>boy.gender.toLowerCase()=="male")
+
+  const filteredMembers = boys.filter(member =>
     member.name.toLowerCase().includes(query.toLowerCase())
-  );
-  const Boys = data.filter((member) =>
-    member.gender.toLowerCase().includes(query.toLowerCase())
   );
   return (
     <div className="p-5 md:p-10 flex flex-col min-h-screen">
@@ -56,7 +54,7 @@ const page = async ({ searchParams }) => {
           </small>
         </Link>
         <small className="md:text-md font-semibold px-4 py-1 bg-blue-500 text-white rounded-full">
-          Boys({data?.length})
+          Boys({boys?.length})
         </small>
         <Link href={"/table/girls"}>
           <small className="px-4 py-1 rounded-full bg-pink-500 text-white">

@@ -27,9 +27,10 @@ const getGirls = async()=>{
 const page = async({searchParams}) => {
   const data = await getGirls();
   const query = searchParams?.query || "";
-  // console.log(query)
 
-  const filteredMembers = data.filter(member =>
+  const girls = data.filter((girl)=>girl.gender.toLowerCase()=="female")
+
+  const filteredMembers = girls.filter(member =>
     member.name.toLowerCase().includes(query.toLowerCase())
   );
   return (
@@ -42,9 +43,9 @@ const page = async({searchParams}) => {
         <div className='mb-5 md:mb-10 flex justify-center md:justify-start items-center gap-4'>
       <Link href={"/"} ><small className='px-4 py-1 rounded-full bg-gray-500 text-white'>All</small></Link>
       <Link href={"/boys"} ><small className='px-4 py-1 rounded-full bg-blue-500 text-white'>Boys</small></Link>
-      <small className="md:text-md font-semibold px-4 py-1 bg-pink-500 text-white rounded-full">Girls({data.length})</small>
+      <small className="md:text-md font-semibold px-4 py-1 bg-pink-500 text-white rounded-full">Girls({girls.length})</small>
     </div>
-    <div className="min-h-screen relative flex flex-wrap-reverse md:flex-wrap items-end md:content-start gap-4 justify-center">
+    <div className="min-h-screen relative flex flex-wrap-reverse md:flex-wrap items-end content-end md:content-start gap-4 justify-center">
       {filteredMembers?.length>0?
             
             filteredMembers.map((user,i)=>{
