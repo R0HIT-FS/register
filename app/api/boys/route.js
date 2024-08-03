@@ -10,6 +10,7 @@ export async function GET(){
       const res = NextResponse.json(boys,{status:200})
       res.headers.set('Access-Control-Allow-Origin', 'https://registration-kohl-ten.vercel.app'); // Your Vercel URL
       res.headers.set('Access-Control-Allow-Methods', 'GET');
+      res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
       return res
     } catch (error) {
      console.log(error)

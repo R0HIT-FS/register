@@ -8,7 +8,7 @@ import TableCard from "../../Components/TableCard";
 
 const getMembers = async () => {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/boys`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`, {
       cache: "no-store",
     });
 

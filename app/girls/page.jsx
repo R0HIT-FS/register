@@ -7,7 +7,7 @@ import Search from '../Components/Search';
 
 const getGirls = async()=>{
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/girls`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`,{
       cache:"no-store"
     });
     if (!res.ok) {
