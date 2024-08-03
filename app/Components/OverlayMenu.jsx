@@ -15,6 +15,7 @@ const OverlayMenu = ({isOpen,toggleNavbar}) => {
         <Link href={"/table"} onClick={toggleNavbar} className='hover:underline text-xl font-semibold uppercase tracking-tighter'>Table view</Link>
         <Link href={"/add-member"} onClick={toggleNavbar} className='hover:underline text-xl font-semibold uppercase tracking-tighter'>Add A Member</Link>
         <Link href={"/filter?minAge=1&maxAge=100"} onClick={toggleNavbar} className='hover:underline text-xl font-semibold uppercase tracking-tighter'>Filter By Age</Link>
+        <Link href={"/drop"} onClick={toggleNavbar} className='text-red-500 hover:underline text-xl font-semibold uppercase tracking-tighter'>Delete all data</Link>
         </div>
     </div>
   )
