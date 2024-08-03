@@ -10,7 +10,7 @@ export default function DeleteCollection() {
     const router = useRouter();
 
     const handleDelete = async () => {
-        const confirmed = confirm("Do you want to delete all data")
+        const confirmed = confirm("ARE YOU SURE YOU WANT TO DELETE ALL DATA?")
         if(confirmed){
             if (!collectionName) {
                 setMessage('Please enter a collection name');
@@ -26,7 +26,7 @@ export default function DeleteCollection() {
                     setMessage(data.message);
                     router.refresh()
                     router.replace("/")
-                    alert("All Data Deleted")
+                    alert("All Data Deleted!")
                 } else {
                     setMessage(data.error || data.message);
                 }
