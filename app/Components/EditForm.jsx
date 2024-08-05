@@ -44,7 +44,11 @@ const EditForm = ({data}) => {
                 if(res.ok){
                     router.push("/");
                     router.refresh();
-                    toast.info("Updated Member Successfully")
+                    toast.info("Updated Member Successfully",{
+                        closeOnClick:true,
+                        draggable:true,
+                        theme:"dark"
+                    })
                 }else{
                     throw new Error("Failed to Update user!")
                 }

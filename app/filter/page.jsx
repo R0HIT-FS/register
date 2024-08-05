@@ -86,7 +86,7 @@ const Page = async ({ searchParams }) => {
             </p>
           )) : 
           <p className='text-center font-semibold text-lg w-full'>
-            No Members in the specified range!
+            No Members Found in the specified range!
           </p>
         }
       </div>
