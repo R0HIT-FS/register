@@ -1,8 +1,14 @@
 import React from 'react'
-import MemberCard from '../Components/MemberCard';
+// import MemberCard from '../Components/MemberCard';
 import Link from 'next/link';
 import AddMember from '../Components/AddMember';
 import Search from '../Components/Search';
+import dynamic from 'next/dynamic';
+const MemberCard = dynamic(() => import('../Components/MemberCard'), {
+  loading: () => <div className='md:h-[15vw] md:w-[15vw] w-[60vw] h-[40vw] bg-zinc-200 rounded-lg'></div>,
+  ssr: false,
+});
+
 
 
 const getGirls = async()=>{

@@ -47,7 +47,8 @@ const EditForm = ({data}) => {
                     toast.info("Updated Member Successfully",{
                         closeOnClick:true,
                         draggable:true,
-                        theme:"dark"
+                        theme:"dark",
+                        autoClose:3000
                     })
                 }else{
                     throw new Error("Failed to Update user!")

@@ -2,9 +2,13 @@ import React from "react";
 import TableHeader from "../Components/TableHeader"
 import Search from "../Components/Search";
 import Link from "next/link";
-import DeleteButton from "../Components/DeleteButton";
-import TableCard from "../Components/TableCard";
 import AddMemberTable from "../Components/AddMemberTable";
+import dynamic from "next/dynamic";
+const TableCard = dynamic(() => import('../Components/TableCard'), {
+  loading: () => <div className='w-full animate-pulse flex items-center justify-start bg-gray-100 rounded-lg p-4'><p>Loading...</p></div>,
+  ssr: false,
+});
+
 
 const getMembers = async () => {
   try {

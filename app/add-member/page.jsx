@@ -46,10 +46,11 @@ const page = () => {
                 if(res.ok){
                     router.push("/");
                     router.refresh();
-                    toast.success("Member Added, Redirecting please wait......",{
+                    toast.success("Member Added Successfully",{
                         closeOnClick:true,
                         draggable:true,
-                        theme:"dark"
+                        theme:"dark",
+                        autoClose:3000
                     })
             }else{
                 throw new Error("Failed to create user!")
