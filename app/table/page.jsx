@@ -1,10 +1,10 @@
 import React from "react";
-import AddMember from "../Components/AddMember";
 import TableHeader from "../Components/TableHeader"
 import Search from "../Components/Search";
 import Link from "next/link";
 import DeleteButton from "../Components/DeleteButton";
 import TableCard from "../Components/TableCard";
+import AddMemberTable from "../Components/AddMemberTable";
 
 const getMembers = async () => {
   try {
@@ -57,7 +57,7 @@ const page = async ({ searchParams }) => {
             <p className="capitalize">No members added yet!</p>
     }
           </div>
-            <AddMember/>
+            <AddMemberTable/>
             </div>
   );
 };

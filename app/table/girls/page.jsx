@@ -2,7 +2,7 @@ import React from "react";
 import Search from "../../Components/Search";
 import Link from "next/link";
 import DeleteButton from "../../Components/DeleteButton";
-import AddMember from "../../Components/AddMember";
+import AddMemberTable from "../../Components/AddMemberTable";
 import TableHeader from "../../Components/TableHeader";
 import TableCard from "../../Components/TableCard";
 
@@ -67,7 +67,7 @@ const page = async ({ searchParams }) => {
         <p className="capitalize">No members added yet!</p>
       )}
             </div>
-            <AddMember/>
+            <AddMemberTable/>
     </div>
   );
 };
