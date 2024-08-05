@@ -1,5 +1,7 @@
 "use client"
 import React from 'react'
+import { toast } from 'react-toastify';
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -45,6 +47,7 @@ const page = () => {
                 if(res.ok){
                     router.push("/table");
                     router.refresh();
+                    toast.success("User Created")
             }else{
                 throw new Error("Failed to create user!")
             }
