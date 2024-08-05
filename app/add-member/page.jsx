@@ -3,6 +3,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 const page = () => {
     const router = useRouter();
@@ -45,6 +46,7 @@ const page = () => {
                 if(res.ok){
                     router.push("/");
                     router.refresh();
+                    toast.success("Member Added, Redirecting please wait......")
             }else{
                 throw new Error("Failed to create user!")
             }

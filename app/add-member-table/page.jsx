@@ -47,7 +47,7 @@ const page = () => {
                 if(res.ok){
                     router.push("/table");
                     router.refresh();
-                    toast.success("User Created")
+                    toast.success("Member Added, Redirecting please wait......")
             }else{
                 throw new Error("Failed to create user!")
             }
