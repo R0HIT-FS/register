@@ -2,6 +2,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 
 
@@ -43,6 +44,7 @@ const EditForm = ({data}) => {
                 if(res.ok){
                     router.push("/");
                     router.refresh();
+                    toast.info("Updated Member Successfully")
                 }else{
                     throw new Error("Failed to Update user!")
                 }
