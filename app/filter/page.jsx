@@ -1,7 +1,8 @@
 
 import React from 'react';
-import FilterAgeFrom from "../Components/FilterAgeFrom" // Ensure the component name is correct
+import FilterAgeFrom from "../Components/FilterAgeFrom"
 import Link from 'next/link';
+import { IoMdArrowBack } from "react-icons/io";
 
 const FilterByAge = async (minage, maxage) => {
   try {
@@ -27,8 +28,9 @@ const Page = async ({ searchParams }) => {
 
   return (
     <div className='p-10 min-h-screen'>
+          <Link href={"/"} className='mb-10 inline-block'><p className='w-fit flex items-center gap-2  px-2 rounded-full hover:bg-slate-300'><IoMdArrowBack /><span>Back To Home</span></p></Link>
       <FilterAgeFrom />
-      <p className='text-left font-semibold mt-4 px-10'>
+      <p className='text-center font-semibold mt-4 px-10'>
       ({filteredUsers.length}) Members found between the ages of {min} and {max} 
       </p> 
       <div className='px-10 py-5 flex flex-col md:flex-row flex-wrap gap-3'>

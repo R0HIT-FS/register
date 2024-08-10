@@ -26,7 +26,7 @@ const FilterAgeFrom = () => {
 
   return (
     <div>
-        <h1 className="text-center md:text-left text-xl font-semibold uppercase">Filter Members By Age</h1>
+        <h1 className="text-center md:text-center mb-5 text-xl font-semibold uppercase">Filter Members By Age</h1>
       <form className="flex flex-col md:flex-row items-center justify-center gap-3"
       onSubmit={handleSubmit}
       >

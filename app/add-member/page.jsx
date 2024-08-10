@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
+import { IoMdArrowBack } from "react-icons/io";
 
 const page = () => {
     const router = useRouter();
@@ -62,7 +63,7 @@ const page = () => {
       };
   return (
     <div className="p-5 md:p-10 h-screen">
-    <Link href={"/"}><p className='w-fit mb-10 px-2 rounded-full hover:bg-slate-300'>Back To Home</p></Link>
+    <Link href={"/"} className='inline-block mb-10'><p className='w-fit flex items-center gap-2  px-2 rounded-full hover:bg-slate-300'><IoMdArrowBack /><span>Back To Home</span></p></Link>
     <h1 className="text-2xl mb-5 md:mb-10 font-bold text-center">Add A Member</h1>   
     <div className="flex justify-center items-center">
         <form className="flex flex-col gap-2 items-start" action="" onSubmit={handleSubmit}>
