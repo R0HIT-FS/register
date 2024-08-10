@@ -38,10 +38,9 @@ const MemberCard = async({ user }) => {
 
   return (
     <div
-      className="w-[60vw] md:w-[15vw] rounded-lg p-2 flex flex-col justify-between items-center gap-1 grow-0 bg-[#f8f8f8] bg-gradient-to-t from-[#f8f8f8] to-gray-100 shadow-lg"
+      className="card w-[60vw] md:w-[15vw] rounded-lg p-2 flex flex-col justify-between items-center gap-1 grow-0 bg-[#f8f8f8] bg-gradient-to-t from-[#f8f8f8] to-gray-100 shadow-lg"
     >
       <div className="w-full">
-
         <div className="membercircle flex justify-center items-center rounded-lg h-32 w-full overflow-hidden">
            <h1 className="h-16 w-16 flex items-center justify-center rounded-full font-semibold"
            style={{ backgroundColor: myRandomColor }}

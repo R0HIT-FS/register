@@ -4,7 +4,7 @@ import DeleteButton from './DeleteButton'
 
 const TableCard = ({user}) => {
   return (
-    <div className="w-full flex items-center justify-between p-4 border-b-2 border-zinc-200">
+    <div className="tile w-full flex items-center justify-between p-4 border-b-2 border-zinc-200">
                     <p className="text-left  w-1/3 capitalize text-sm md:text-md font-medium">{user.name}</p>
                     <p className="text-center w-1/3 hidden md:block text-sm md:text-md">{user.age}</p>
                     <p className="text-center w-1/3 hidden md:block text-sm md:text-md">{user.gender}</p>

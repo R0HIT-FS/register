@@ -16,14 +16,13 @@ body{
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* Firefox */
+
 input[type=number] {
   -moz-appearance: textfield;
 }
@@ -81,4 +80,35 @@ input[type=number] {
   .membercircle{
     display:none;
   }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.card {
+  animation: scaleUp 0.2s ease-in-out forwards;
+}
+
+
+@keyframes scaleX {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.tile {
+  animation: scaleX 0.2s ease-in-out forwards;
 }
