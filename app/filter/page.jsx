@@ -27,10 +27,10 @@ const Page = async ({ searchParams }) => {
   const filteredUsers = await FilterByAge(min, max);
 
   return (
-    <div className='p-10 min-h-screen'>
+    <div className='p-5 min-h-screen'>
           <Link href={"/"} className='mb-10 inline-block'><p className='w-fit flex items-center gap-2  px-2 rounded-full hover:bg-slate-300'><IoMdArrowBack /><span>Back To Home</span></p></Link>
       <FilterAgeFrom />
-      <p className='text-center font-semibold mt-4 px-10'>
+      <p className='text-center font-medium mt-4 px-10'>
       ({filteredUsers.length}) Members found between the ages of {min} and {max} 
       </p> 
       <div className='px-10 py-5 flex flex-col md:flex-row flex-wrap gap-3'>
@@ -40,8 +40,8 @@ const Page = async ({ searchParams }) => {
               {user.name} ({user.age})
             </p>
           )) : 
-          <p className='text-center font-semibold text-lg w-full'>
-            No Members Found in the specified range!
+          <p className='text-center font-light text-lg text-gray-500 w-full'>
+            Couldn't find members in the specified range!
           </p>
         }
       </div>

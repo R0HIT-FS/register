@@ -30,13 +30,11 @@ const FilterAgeFrom = () => {
       <form className="flex flex-col md:flex-row items-center justify-center gap-3"
       onSubmit={handleSubmit}
       >
-        <div className="flex gap-3 justify-center items-center flex-col md:flex-row">
-        <span className="text-xsm md:text-lg">From:</span>
-        <input className="p-2 md:p-4 w-[150px] md:[200px] rounded-lg border-2 border-zinc-300" value={ageFrom} placeholder="Enter Age.." onChange={handleFrom} type="number" required />
+        <div className="from  flex gap-3 justify-center items-center flex-col md:flex-row">
+        <input className="p-2 md:p-4 w-[150px] md:[200px] rounded-lg border-2 border-zinc-300" value={ageFrom} placeholder="From" onChange={handleFrom} type="number" required />
         </div>
-        <div className="flex gap-3 justify-center items-center flex-col md:flex-row">
-        <span className="text-xsm md:text-lg">To:</span>
-        <input className="p-2 md:p-4 w-[150px] md:[200px] rounded-lg border-2 border-zinc-300" value={ageTo} placeholder="Enter Age.."
+        <div className="to  flex gap-3 justify-center items-center flex-col md:flex-row">
+        <input className="p-2 md:p-4 w-[150px] md:[200px] rounded-lg border-2 border-zinc-300" value={ageTo} placeholder="To"
          onChange={handleTo} 
          type="number" 
          required
