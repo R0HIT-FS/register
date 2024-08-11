@@ -24,43 +24,98 @@ const page = () => {
         }));
       };
     
-      const handleSubmit = async(e) => {
+    //   const handleSubmit = async(e) => {
+    //     e.preventDefault();
+
+
+    //     try {
+
+    //         const phone = document.getElementById("phone").value
+    //         const age = document.getElementById("age").value
+    //         console.log(process.env.NEXT_PUBLIC_API_URL)
+    //         if(phone.length<10 || age<0){
+    //                 alert("Contact No. or Age Invalid!")
+    //         }
+    //         else{
+    //             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`,{
+    //                 method:"POST",
+    //                 headers:{
+    //                     "Content-type":"application/json"
+    //                 },
+    //                 body:JSON.stringify(formData)
+    //             })
+    //             if(res.ok){
+    //                 router.push("/");
+    //                 router.refresh();
+    //                 toast.success("Member Added Successfully",{
+    //                     closeOnClick:true,
+    //                     draggable:true,
+    //                     theme:"dark",
+    //                     autoClose:3000
+    //                 })
+    //         }else{
+    //             throw new Error("Failed to create user!")
+    //         }
+    //         }
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    //   };
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-
+    
         try {
-
-            const phone = document.getElementById("phone").value
-            const age = document.getElementById("age").value
-            console.log(process.env.NEXT_PUBLIC_API_URL)
-            if(phone.length<10 || age<0){
-                    alert("Contact No. or Age Invalid!")
-            }
-            else{
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`,{
-                    method:"POST",
-                    headers:{
-                        "Content-type":"application/json"
-                    },
-                    body:JSON.stringify(formData)
-                })
-                if(res.ok){
-                    router.push("/");
-                    router.refresh();
-                    toast.success("Member Added Successfully",{
-                        closeOnClick:true,
-                        draggable:true,
-                        theme:"dark",
-                        autoClose:3000
-                    })
-            }else{
-                throw new Error("Failed to create user!")
-            }
+            const phone = document.getElementById("phone").value;
+            const age = document.getElementById("age").value;
+    
+            if (phone.length < 10 || age < 0) {
+                alert("Contact No. or Age Invalid!");
+            } else {
+                // Check if the exact user already exists
+                const checkRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?name=${encodeURIComponent(formData.name)}`);
+                const existingUser = await checkRes.json();
+    
+                // Normalize names by removing spaces and making them lowercase
+                const normalizeName = (name) => name.toLowerCase().replace(/\s+/g, '');
+    
+                // Filter the results to see if a normalized match exists
+                const exactMatch = existingUser.some(user => 
+                    normalizeName(user.name) === normalizeName(formData.name)
+                );
+    
+                if (exactMatch) {
+                    alert("User with this exact name already exists!");
+                } else {
+                    // Proceed with adding the new user
+                    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`, {
+                        method: "POST",
+                        headers: {
+                            "Content-type": "application/json",
+                        },
+                        body: JSON.stringify(formData),
+                    });
+    
+                    if (res.ok) {
+                        router.push("/");
+                        router.refresh();
+                        toast.success("Member Added Successfully", {
+                            closeOnClick: true,
+                            draggable: true,
+                            theme: "dark",
+                            autoClose: 3000,
+                        });
+                    } else {
+                        throw new Error("Failed to create user!");
+                    }
+                }
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-      };
+    };
+    
   return (
     <div className="p-5 md:p-10 h-screen">
     <Link href={"/"} className='inline-block mb-10'><p className='w-fit flex items-center gap-2  px-2 rounded-full hover:bg-slate-300'><IoMdArrowBack /><span>Back To Home</span></p></Link>
