@@ -24,43 +24,6 @@ const page = () => {
         }));
       };
     
-    //   const handleSubmit = async(e) => {
-    //     e.preventDefault();
-
-
-    //     try {
-
-    //         const phone = document.getElementById("phone").value
-    //         const age = document.getElementById("age").value
-    //         console.log(process.env.NEXT_PUBLIC_API_URL)
-    //         if(phone.length<10 || age<0){
-    //                 alert("Contact No. or Age Invalid!")
-    //         }
-    //         else{
-    //             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`,{
-    //                 method:"POST",
-    //                 headers:{
-    //                     "Content-type":"application/json"
-    //                 },
-    //                 body:JSON.stringify(formData)
-    //             })
-    //             if(res.ok){
-    //                 router.push("/");
-    //                 router.refresh();
-    //                 toast.success("Member Added Successfully",{
-    //                     closeOnClick:true,
-    //                     draggable:true,
-    //                     theme:"dark",
-    //                     autoClose:3000
-    //                 })
-    //         }else{
-    //             throw new Error("Failed to create user!")
-    //         }
-    //         }
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    //   };
 
 
     const handleSubmit = async (e) => {
