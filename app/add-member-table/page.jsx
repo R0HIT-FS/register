@@ -37,8 +37,8 @@ const page = () => {
                 const checkRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?name=${encodeURIComponent(formData.name)}`);
                 const existingUser = await checkRes.json();
     
-                // Normalize names by removing spaces and making them lowercase
-                const normalizeName = (name) => name.toLowerCase().replace(/\s+/g, '');
+                // Normalize names by removing spaces, punctuation, and making them lowercase
+                const normalizeName = (name) => name.toLowerCase().replace(/[\s.]/g, '');
     
                 // Filter the results to see if a normalized match exists
                 const exactMatch = existingUser.some(user => 
@@ -46,7 +46,12 @@ const page = () => {
                 );
     
                 if (exactMatch) {
-                    alert("User with this exact name already exists!");
+                    toast.error("User with this exact name already exists!", {
+                        closeOnClick: true,
+                        draggable: true,
+                        theme: "dark",
+                        autoClose: 3000,
+                    });
                 } else {
                     // Proceed with adding the new user
                     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`, {

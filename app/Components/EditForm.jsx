@@ -29,36 +29,58 @@ const EditForm = ({data}) => {
         e.preventDefault();
 
         try {
-            const phone = document.getElementById("phone").value
-            const age = document.getElementById("age").value
-            if(phone.length<10 || age<0){
-                    alert("Contact No. or Age Invalid!")
-            }else{
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${data._id}`,{
-                    method:"PUT",
-                    headers:{
-                        "Content-type":"application/json"
-                    },
-                    body:JSON.stringify(formData)
-                })
-                if(res.ok){
-                    router.push("/");
-                    router.refresh();
-                    toast.info("Updated Member Successfully",{
-                        closeOnClick:true,
-                        draggable:true,
-                        theme:"dark",
-                        autoClose:3000
-                    })
-                }else{
-                    throw new Error("Failed to Update user!")
+            const phone = document.getElementById("phone").value;
+            const age = document.getElementById("age").value;
+
+            if(phone.length < 10 || age < 0){
+                alert("Contact No. or Age Invalid!");
+            } else {
+                // Check if a user with the new name already exists, excluding the current user
+                const checkRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?name=${encodeURIComponent(formData.newName)}`);
+                const existingUsers = await checkRes.json();
+
+                const normalizeName = (name) => name.toLowerCase().replace(/[\s.]/g, '');
+
+                // Filter the results to see if a normalized match exists, excluding the current user's name
+                const exactMatch = existingUsers.some(user => 
+                    user._id !== data._id && normalizeName(user.name) === normalizeName(formData.newName)
+                );
+
+                if (exactMatch) {
+                    toast.warn("Another user with this exact name already exists!",{
+                        closeOnClick: true,
+                        draggable: true,
+                        theme: "dark",
+                        autoClose: 3000
+                    });
+                } else {
+                    // Proceed with updating the user
+                    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${data._id}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-type": "application/json",
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if(res.ok){
+                        router.push("/");
+                        router.refresh();
+                        toast.info("Updated Member Successfully",{
+                            closeOnClick: true,
+                            draggable: true,
+                            theme: "dark",
+                            autoClose: 3000
+                        });
+                    } else {
+                        throw new Error("Failed to update user!");
+                    }
                 }
             }
-
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-      };
+    };
   return (
     <div className="p-10 h-screen ">
     <h1 className="text-lg md:text-2xl mb-5 md:mb-10 font-medium text-center">You are editing <b className='capitalize'>{data.name}'s</b> information</h1>   
