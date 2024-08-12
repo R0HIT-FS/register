@@ -83,7 +83,7 @@ const EditForm = ({data}) => {
     };
   return (
     <div className="p-10 h-screen ">
-    <h1 className="text-lg md:text-2xl mb-5 md:mb-10 font-medium text-center">You are editing <b className='capitalize'>{data.name}'s</b> information</h1>   
+    <h1 className="text-lg md:text-2xl mb-5 md:mb-10 font-medium text-center">You are editing <b className='uppercase'>{data.name}'s</b> information</h1>   
     <div className="flex justify-center items-center">
         <form className="flex flex-col gap-2 items-start" action="" onSubmit={handleSubmit}>
             <small>Name:</small><input onChange={handleChange} name='newName' value={formData.newName} className="px-4 py-2 rounded-md border-2 border-zinc-700" type="text" placeholder="Enter Name..." />
