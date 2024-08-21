@@ -112,3 +112,9 @@ input[type=number] {
 .tile {
   animation: scaleX 0.2s ease-in-out forwards;
 }
+
+
+.disabled{
+  background-color:rgb(169, 169, 169);
+  color:white;
+}

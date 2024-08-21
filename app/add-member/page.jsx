@@ -64,16 +64,19 @@ const page = () => {
                         },
                         body: JSON.stringify(formData),
                     });
-    
+                    
                     if (res.ok) {
                         router.push("/");
                         router.refresh();
+                        document.getElementById("addBtn").setAttribute("disabled",true);                        
+                        document.getElementById("addBtn").classList.add("disabled");                        
                         toast.success("Member Added Successfully", {
                             closeOnClick: true,
                             draggable: true,
                             theme: "dark",
                             autoClose: 3000,
                         });
+
                     } else {
                         throw new Error("Failed to create user!");
                     }
@@ -103,7 +106,7 @@ const page = () => {
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
-            <button className="px-4 py-2 rounded-md text-white bg-green-500">Submit</button>
+            <button id='addBtn' className="px-4 py-2 rounded-md text-white bg-green-500">Submit</button>
         </form>
     </div>
     </div>

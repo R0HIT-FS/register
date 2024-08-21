@@ -12,7 +12,7 @@ const InfoCard = ({user}) => {
             <p className='font-medium'>Contact : <span className='font-normal'>{user?.phone}</span></p>
             <p className='font-medium'>Gender : <span className='capitalize font-normal'>{user?.gender}</span></p>
             <p className='font-medium'>Payment : {user?.paid.toLowerCase()=="yes"?<span className='capitalize font-normal px-2 rounded-full bg-green-500'>Done</span>:<span className='capitalize font-normal px-2 rounded-full bg-red-500'>Pending</span>}</p>
-            <Link href={`/edit/${user._id}`} className='text-black mt-2 py-1 px-2 rounded-lg bg-yellow-300'>Edit Member</Link>
+            <Link href={`/edit/${user._id}`} className=' mt-2 py-1 px-2 rounded-lg bg-amber-700 text-white hover:text-gray-300'>Edit Member</Link>
         </div>
     </div>
   )

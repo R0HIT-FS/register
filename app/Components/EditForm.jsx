@@ -66,6 +66,8 @@ const EditForm = ({data}) => {
                     if(res.ok){
                         router.push("/");
                         router.refresh();
+                        document.getElementById("addBtn").setAttribute("disabled",true); 
+                        document.getElementById("addBtn").classList.add("disabled");  
                         toast.info("Updated Member Successfully",{
                             closeOnClick: true,
                             draggable: true,
@@ -99,7 +101,7 @@ const EditForm = ({data}) => {
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
-            <button className="px-4 py-2 rounded-md text-white bg-green-500">Submit</button>
+            <button id="addBtn"  className="px-4 py-2 rounded-md text-white bg-green-500">Submit</button>
         </form>
     </div>
     </div>
