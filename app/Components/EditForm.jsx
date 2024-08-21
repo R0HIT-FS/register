@@ -39,7 +39,7 @@ const EditForm = ({data}) => {
                 const checkRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?name=${encodeURIComponent(formData.newName)}`);
                 const existingUsers = await checkRes.json();
 
-                const normalizeName = (name) => name.toLowerCase().replace(/[\s.]/g, '');
+                const normalizeName = (name) => name.toLowerCase().replace(/[\s._]/g, '');
 
                 // Filter the results to see if a normalized match exists, excluding the current user's name
                 const exactMatch = existingUsers.some(user => 

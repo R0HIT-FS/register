@@ -41,7 +41,7 @@ const page = () => {
                 const existingUser = await checkRes.json();
     
                 // Normalize names by removing spaces, punctuation, and making them lowercase
-                const normalizeName = (name) => name.toLowerCase().replace(/[\s.]/g, '');
+                const normalizeName = (name) => name.toLowerCase().replace(/[\s._]/g, '');
     
                 // Filter the results to see if a normalized match exists
                 const exactMatch = existingUser.some(user => 
