@@ -148,14 +148,14 @@ const EditForm = ({ data }) => {
                     className="border-2 border-[#27272A] bg-[#18181A]"
                     type="text"
                     id="name"
-                    placeholder="Name of your project"
+                    placeholder="Enter Name"
                     onChange={handleChange}
                     name="newName"
                     value={formData.newName}
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="phone">Age</Label>
+                  <Label htmlFor="phone">Contact No.</Label>
                   <Input
                     className="border-2 border-[#27272A] bg-[#18181A]"
                     type="number"
@@ -172,7 +172,7 @@ const EditForm = ({ data }) => {
                     className="border-2 border-[#27272A] bg-[#18181A]"
                     type="number"
                     id="age"
-                    placeholder="Enter age"
+                    placeholder="Enter Age"
                     onChange={handleChange}
                     name="newAge"
                     value={formData.newAge}
@@ -189,7 +189,7 @@ const EditForm = ({ data }) => {
                   >
                     <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A]" id="framework">
                       <SelectValue
-                        placeholder="Select"
+                        placeholder="Select Gender"
                       />
                     </SelectTrigger>
                     <SelectContent position="popper">
@@ -226,7 +226,6 @@ const EditForm = ({ data }) => {
       </div>
             </form>
           </CardContent>
-
         </Card>
       </div>
     </div>
