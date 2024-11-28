@@ -37,9 +37,12 @@ const page = async ({ searchParams }) => {
   return (
     <div className="p-5 md:p-10 flex flex-col min-h-screen">
       <Search />
+      <div className="flex justify-between items-start">
       <div className="flex items-center gap-2 bg-gray-200 w-fit rounded-full mb-4 p-1">
           <Link href={`/`} className="uppercase text-md font-medium px-2 py-1 rounded-full text-zinc-400">Grid VIEW</Link>
           <Link href={`/table`} className="uppercase text-md font-semibold px-2 py-1 bg-white rounded-full">Table View</Link>
+      </div>
+      <AddMemberTable/>
       </div>
       <div className="mb-5 md:mb-10 flex justify-center md:justify-start items-center gap-4">
         <Link href={"/table"}>
@@ -70,7 +73,6 @@ const page = async ({ searchParams }) => {
         <p className="capitalize">No members added yet!</p>
       )}
             </div>
-            <AddMemberTable/>
     </div>
   );
 };

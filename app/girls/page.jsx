@@ -42,9 +42,12 @@ const page = async({searchParams}) => {
   return (
     <div className="p-5 md:p-10">
       <Search/>
+      <div className="flex justify-between items-start">
       <div className="flex items-center gap-2 bg-gray-200 w-fit rounded-full mb-4 p-1">
           <Link href={`/`} className="uppercase text-md font-semibold bg-white px-2 py-1 rounded-full">Grid VIEW</Link>
           <Link href={`/table`} className="uppercase text-md font-medium px-2 py-1 text-zinc-400">Table View</Link>
+      </div>
+      <AddMember/>
       </div>
         <div className='mb-5 md:mb-10 flex justify-center md:justify-start items-center gap-4'>
       <Link href={"/"} ><small className='px-4 py-1 rounded-full bg-gray-500 text-white'>All</small></Link>
@@ -63,7 +66,7 @@ const page = async({searchParams}) => {
       }
 
     </div>
-    <AddMember/>
+
     </div>
   )
 }

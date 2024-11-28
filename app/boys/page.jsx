@@ -39,6 +39,7 @@ const page = async ({ searchParams }) => {
   return (
     <div className="p-5 md:p-10">
       <Search />
+      <div className="flex justify-between items-start">
       <div className="flex items-center gap-2 bg-gray-200 w-fit rounded-full mb-4 p-1">
         <Link
           href={`/`}
@@ -52,6 +53,8 @@ const page = async ({ searchParams }) => {
         >
           Table View
         </Link>
+      </div>
+      <AddMember />
       </div>
       <div className="mb-5 md:mb-10 flex justify-center md:justify-start items-center gap-4">
         <Link href={"/"}>
@@ -77,7 +80,7 @@ const page = async ({ searchParams }) => {
           <h1>No Members Added Yet!</h1>
         )}
       </div>
-      <AddMember />
+      
     </div>
   );
 };
