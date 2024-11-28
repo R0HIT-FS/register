@@ -28,7 +28,7 @@ const page = async({params}) => {
   return (
     <div className={`w-full h-screen bg-[#09090B]`}
     >
-    <Link href="/"><button className='px-4 py-1 hover:bg-gray-500 text-sm text-white rounded-full m-4'>Back to home</button></Link>
+    <Link href="/"><button className='px-4 py-1 hover:bg-[#18181A] text-sm text-white rounded-full m-4'>Back to home</button></Link>
     <div className='p-10 w-full flex flex-col justify-center items-center gap-5'>
         <InfoCard user={data}/>
     </div>

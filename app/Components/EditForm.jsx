@@ -1,93 +1,122 @@
-"use client"
-import React from 'react'
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { toast } from 'react-toastify';
+"use client";
+import React from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
+const EditForm = ({ data }) => {
+  const router = useRouter();
 
-const EditForm = ({data}) => {
-   const router = useRouter();
-   
-    const [formData, setFormData] = useState({
-        newName: data.name,
-        newAge: data.age,
-        newNumber: data.phone,
-        newGender:data.gender,
-        newPaid:data.paid
-      });
-    
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          [name]: value,
-        }));
-      };
-    
-      const handleSubmit = async(e) => {
-        e.preventDefault();
+  const [formData, setFormData] = useState({
+    newName: data.name,
+    newAge: data.age,
+    newNumber: data.phone,
+    newGender: data.gender,
+    newPaid: data.paid,
+  });
 
-        try {
-            const phone = document.getElementById("phone").value;
-            const age = document.getElementById("age").value;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
 
-            if(phone.length < 10 || age < 0){
-                alert("Contact No. or Age Invalid!");
-            } else {
-                // Check if a user with the new name already exists, excluding the current user
-                const checkRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?name=${encodeURIComponent(formData.newName)}`);
-                const existingUsers = await checkRes.json();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-                const normalizeName = (name) => name.toLowerCase().replace(/[\s._]/g, '');
+    try {
+      const phone = document.getElementById("phone").value;
+      const age = document.getElementById("age").value;
 
-                // Filter the results to see if a normalized match exists, excluding the current user's name
-                const exactMatch = existingUsers.some(user => 
-                    user._id !== data._id && normalizeName(user.name) === normalizeName(formData.newName)
-                );
+      if (phone.length < 10 || age < 0) {
+        alert("Contact No. or Age Invalid!");
+      } else {
+        // Check if a user with the new name already exists, excluding the current user
+        const checkRes = await fetch(
+          `${
+            process.env.NEXT_PUBLIC_API_URL
+          }/api/users?name=${encodeURIComponent(formData.newName)}`
+        );
+        const existingUsers = await checkRes.json();
 
-                if (exactMatch) {
-                    toast.warn("Another user with this exact name already exists!",{
-                        closeOnClick: true,
-                        draggable: true,
-                        theme: "dark",
-                        autoClose: 3000
-                    });
-                } else {
-                    // Proceed with updating the user
-                    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${data._id}`, {
-                        method: "PUT",
-                        headers: {
-                            "Content-type": "application/json",
-                        },
-                        body: JSON.stringify(formData)
-                    });
+        const normalizeName = (name) =>
+          name.toLowerCase().replace(/[\s._]/g, "");
 
-                    if(res.ok){
-                        router.push("/");
-                        router.refresh();
-                        document.getElementById("addBtn").setAttribute("disabled",true); 
-                        document.getElementById("addBtn").classList.add("disabled");  
-                        toast.info("Updated Member Successfully",{
-                            closeOnClick: true,
-                            draggable: true,
-                            theme: "dark",
-                            autoClose: 3000
-                        });
-                    } else {
-                        throw new Error("Failed to update user!");
-                    }
-                }
+        // Filter the results to see if a normalized match exists, excluding the current user's name
+        const exactMatch = existingUsers.some(
+          (user) =>
+            user._id !== data._id &&
+            normalizeName(user.name) === normalizeName(formData.newName)
+        );
+
+        if (exactMatch) {
+          toast.warn("Another user with this exact name already exists!", {
+            closeOnClick: true,
+            draggable: true,
+            theme: "dark",
+            autoClose: 3000,
+          });
+        } else {
+          // Proceed with updating the user
+          const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/users/${data._id}`,
+            {
+              method: "PUT",
+              headers: {
+                "Content-type": "application/json",
+              },
+              body: JSON.stringify(formData),
             }
-        } catch (error) {
-            console.log(error);
+          );
+
+          if (res.ok) {
+            router.push("/");
+            router.refresh();
+            document.getElementById("addBtn").setAttribute("disabled", true);
+            document.getElementById("addBtn").classList.add("disabled");
+            toast.info("Updated Member Successfully", {
+              closeOnClick: true,
+              draggable: true,
+              theme: "dark",
+              autoClose: 3000,
+            });
+          } else {
+            throw new Error("Failed to update user!");
+          }
         }
-    };
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
-    <div className="p-10 h-screen ">
-    <h1 className="text-lg md:text-2xl mb-5 md:mb-10 font-medium text-center">You are editing <b className='uppercase'>{data.name}'s</b> information</h1>   
-    <div className="flex justify-center items-center">
-        <form className="flex flex-col gap-2 items-start" action="" onSubmit={handleSubmit}>
+    <div className="p-10 min-h-screen bg-[#09090B]">
+      <h1 className="text-lg md:text-2xl mb-5 md:mb-10 font-medium text-center text-white">
+        You are editing <b className="uppercase">{data.name}'s</b> information
+      </h1>
+      <div className="flex justify-center items-center">
+        {/* <form className="flex flex-col gap-2 items-start" action="" onSubmit={handleSubmit}>
             <small>Name:</small><input onChange={handleChange} name='newName' value={formData.newName} className="px-4 py-2 rounded-md border-2 border-zinc-700" type="text" placeholder="Enter Name..." />
             <small>Contact:</small><input id='phone' onChange={handleChange} name='newNumber' value={formData.newNumber} className="px-4 py-2 rounded-md border-2 border-zinc-700" type="number" placeholder="Enter Contact Number"/>
             <small>Age:</small><input id='age' onChange={handleChange} name='newAge' value={formData.newAge} className="px-4 py-2 rounded-md border-2 border-zinc-700" type="number" placeholder="Enter Age..." />
@@ -102,10 +131,106 @@ const EditForm = ({data}) => {
                 <option value="No">No</option>
             </select>
             <button id="addBtn"  className="px-4 py-2 rounded-md text-white bg-green-500">Submit</button>
-        </form>
-    </div>
-    </div>
-  )
-}
+        </form> */}
+        <Card className=" w-full sm:[350px] md:w-[350px] bg-transparent text-white border-2 border-[#27272A] ">
+          <CardHeader>
+            <CardTitle>EDIT FORM</CardTitle>
+            <CardDescription>
+              
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit}>
+              <div className="grid w-full items-center gap-4">
+                <div className="flex flex-col space-y-1.5">
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                    className="border-2 border-[#27272A] bg-[#18181A]"
+                    type="text"
+                    id="name"
+                    placeholder="Name of your project"
+                    onChange={handleChange}
+                    name="newName"
+                    value={formData.newName}
+                  />
+                </div>
+                <div className="flex flex-col space-y-1.5">
+                  <Label htmlFor="phone">Age</Label>
+                  <Input
+                    className="border-2 border-[#27272A] bg-[#18181A]"
+                    type="number"
+                    id="phone"
+                    placeholder="Enter Contact"
+                    onChange={handleChange}
+                    name="newNumber"
+                    value={formData.newNumber}
+                  />
+                </div>
+                <div className="flex flex-col space-y-1.5">
+                  <Label htmlFor="age">Age</Label>
+                  <Input
+                    className="border-2 border-[#27272A] bg-[#18181A]"
+                    type="number"
+                    id="age"
+                    placeholder="Enter age"
+                    onChange={handleChange}
+                    name="newAge"
+                    value={formData.newAge}
+                  />
+                </div>
+                <div className="flex flex-col space-y-1.5">
+                  <Label htmlFor="framework">Gender</Label>
+                  <Select  name="newGender" value={formData.newGender}
+                  onValueChange={(value) =>
+                    handleChange({
+                      target: { name: "newGender", value },
+                    })
+                  }
+                  >
+                    <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A]" id="framework">
+                      <SelectValue
+                        placeholder="Select"
+                      />
+                    </SelectTrigger>
+                    <SelectContent position="popper">
+                      <SelectItem value="Male">Male</SelectItem>
+                      <SelectItem value="Female">Female</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex flex-col space-y-1.5">
+                  <Label htmlFor="framework">Registration Fee Paid:</Label>
+                  <Select
+                    name="newPaid"
+                    value={formData.newPaid}
+                    onValueChange={(value) =>
+                      handleChange({
+                        target: { name: "newPaid", value },
+                      })
+                    }
+                  >
+                    <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A]" id="framework">
+                      <SelectValue placeholder="Select" />
+                    </SelectTrigger>
+                    <SelectContent position="popper">
+                      <SelectItem value="Yes">Yes</SelectItem>
+                      <SelectItem value="No">No</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              {/* <Button id="addBtn">Update</Button> */}
+              <div className="flex justify-between mt-5">
+        <div></div>
+        <Button id="addBtn">Update</Button>
+      </div>
+            </form>
+          </CardContent>
 
-export default EditForm
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default EditForm;
