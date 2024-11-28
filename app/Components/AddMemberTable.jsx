@@ -7,7 +7,7 @@ import { GoPlus } from "react-icons/go";
 
 const AddMemberTable = () => {
   return (
-    <Link title='Add A Member' href="/add-member-table"><div className="p-2 bg-[#18181A] text-white flex items-center justify-center rounded-full ">
+    <Link title='Add A Member' href="/add-member-table"><div className="p-2 bg-[#18181A] text-white flex items-center justify-center rounded-full fixed top-[90%] right-[2%] z-[99]">
         <GoPlus size={"1.5em"}/>
     </div>
     </Link>
