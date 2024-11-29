@@ -15,8 +15,6 @@ export async function GET(request){
         await connectToDb();
         const minAge = request.nextUrl.searchParams.get("minAge");
         const maxAge = request.nextUrl.searchParams.get("maxAge");
-        console.log(minAge)
-        console.log(maxAge)
         const users = await User.find({age:{$gte:parseInt(minAge),$lte:parseInt(maxAge)}})
         return NextResponse.json(users,{status:200})
     } catch (error) {
