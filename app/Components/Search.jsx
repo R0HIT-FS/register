@@ -29,7 +29,7 @@ const Search = () => {
     }
   return (
     <div className='w-full rounded-lg mb-4 flex items-center gap-3'>
-        <input className='w-full rounded-lg p-2 border-2 border-zinc-400' id='search' type="text"  placeholder='Search Member....' onChange={handleChange} defaultValue={searchParams.get("query")?.toString()}/><span className={`${parseInt(search.length)>0? "block":"hidden"} transition-all`} onClick={handleClick}><IoMdCloseCircle className='text-white' size={"1.6em"} /></span>
+        <input className='w-full rounded-lg p-2 bg-transparent text-white border-2 border-zinc-400' id='search' type="text"  placeholder='Search Member....' onChange={handleChange} defaultValue={searchParams.get("query")?.toString()}/><span className={`${parseInt(search.length)>0? "block":"hidden"} transition-all`} onClick={handleClick}><IoMdCloseCircle className='text-white hover:text-zinc-400 cursor-pointer' size={"1.6em"} /></span>
     </div>
   )
 }

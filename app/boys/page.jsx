@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import AddMember from "../Components/AddMember";
 import Search from "../Components/Search";
+import Switch from "../Components/Switch";
 
 import dynamic from 'next/dynamic';
 const MemberCard = dynamic(() => import('../Components/MemberCard'), {
@@ -39,23 +40,8 @@ const page = async ({ searchParams }) => {
   return (
     <div className="p-5 md:p-10 bg-[#09090B]">
       <Search />
-      <div className="flex justify-between items-start">
-      <div className="flex items-center gap-2 bg-gray-200 w-fit rounded-full mb-4 p-1">
-        <Link
-          href={`/`}
-          className="uppercase text-md font-semibold bg-white px-2 py-1 rounded-full"
-        >
-          Grid VIEW
-        </Link>
-        <Link
-          href={`/table`}
-          className="uppercase text-md font-medium px-2 py-1 text-zinc-400"
-        >
-          Table View
-        </Link>
-      </div>
+      <Switch gridlink={"boys"} tablelink={"table/boys"}/>
       <AddMember />
-      </div>
       <div className="mb-5 md:mb-10 flex justify-center md:justify-start items-center gap-4">
         <Link href={"/"}>
           <small className="px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white">
