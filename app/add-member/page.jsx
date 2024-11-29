@@ -68,7 +68,7 @@ const page = () => {
             const phone = document.getElementById("phone").value;
             const age = document.getElementById("age").value;
     
-            if (phone.length < 10 || age < 0) {
+            if (phone.length < 10 || age < 0 || age == "") {
                 alert("Contact No. or Age Invalid!");
             } else {
                 // Check if the exact user already exists
@@ -82,6 +82,7 @@ const page = () => {
                 const exactMatch = existingUser.some(user => 
                     normalizeName(user.name) === normalizeName(formData.name)
                 );
+                handleClick();
     
                 if (exactMatch) {
                     toast.error("User with this exact name already exists!", {
@@ -234,7 +235,7 @@ const page = () => {
                   className="p-6"
                   id="addBtn"
                   disabled={dis}
-                  onClick={handleClick}
+                  // onClick={handleClick}
                 >
                   {btntext}
                 </Button>

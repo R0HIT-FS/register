@@ -62,7 +62,7 @@ const EditForm = ({ data }) => {
       const phone = document.getElementById("phone").value;
       const age = document.getElementById("age").value;
 
-      if (phone.length < 10 || age < 0) {
+      if (phone.length < 10 || age < 0 || age == "") {
         alert("Contact No. or Age Invalid!");
       } else {
         // Check if a user with the new name already exists, excluding the current user
@@ -82,6 +82,8 @@ const EditForm = ({ data }) => {
             user._id !== data._id &&
             normalizeName(user.name) === normalizeName(formData.newName)
         );
+
+        handleClick();
 
         if (exactMatch) {
           toast.warn("Another user with this exact name already exists!", {
@@ -165,6 +167,7 @@ const EditForm = ({ data }) => {
                     onChange={handleChange}
                     name="newName"
                     value={formData.newName}
+                    required
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
@@ -177,6 +180,7 @@ const EditForm = ({ data }) => {
                     onChange={handleChange}
                     name="newNumber"
                     value={formData.newNumber}
+                    required
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
@@ -245,7 +249,7 @@ const EditForm = ({ data }) => {
                   className="p-6"
                   id="addBtn"
                   disabled={dis}
-                  onClick={handleClick}
+                  // onClick={handleClick}
                 >
                   {btntext}
                 </Button>
