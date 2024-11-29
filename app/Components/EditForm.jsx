@@ -53,10 +53,12 @@ const EditForm = ({ data }) => {
         Please wait
       </>
     );
+    setdis(true)
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    handleClick();
 
     try {
       const phone = document.getElementById("phone").value;
@@ -65,6 +67,7 @@ const EditForm = ({ data }) => {
       if (phone.length < 10 || age < 0 || age == "") {
         alert("Contact No. or Age Invalid!");
       } else {
+        
         // Check if a user with the new name already exists, excluding the current user
         const checkRes = await fetch(
           `${
@@ -83,7 +86,6 @@ const EditForm = ({ data }) => {
             normalizeName(user.name) === normalizeName(formData.newName)
         );
 
-        handleClick();
 
         if (exactMatch) {
           toast.warn("Another user with this exact name already exists!", {
@@ -110,7 +112,7 @@ const EditForm = ({ data }) => {
             router.refresh();
             // document.getElementById("addBtn").setAttribute("disabled", true);
             // document.getElementById("addBtn").classList.add("disabled");
-            setdis(true);
+            // setdis(true);
             toast.info("Updated Member Successfully", {
               closeOnClick: true,
               draggable: true,

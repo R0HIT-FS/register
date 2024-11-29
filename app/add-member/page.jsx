@@ -57,12 +57,14 @@ const page = () => {
             Please wait
           </>
         );
+        setdis(true)
       };
     
 
 
       const handleSubmit = async (e) => {
         e.preventDefault();
+        handleClick();
     
         try {
             const phone = document.getElementById("phone").value;
@@ -82,7 +84,7 @@ const page = () => {
                 const exactMatch = existingUser.some(user => 
                     normalizeName(user.name) === normalizeName(formData.name)
                 );
-                handleClick();
+                
     
                 if (exactMatch) {
                     toast.error("User with this exact name already exists!", {
@@ -104,7 +106,7 @@ const page = () => {
                     if (res.ok) {
                         router.push("/");
                         router.refresh();
-                        setdis(true);                       
+                        // setdis(true);                       
                         toast.success("Member Added Successfully", {
                             closeOnClick: true,
                             draggable: true,
