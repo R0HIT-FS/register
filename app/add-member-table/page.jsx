@@ -24,9 +24,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Loader2 } from "lucide-react";
 
 const page = () => {
     const router = useRouter();
+
+    const [btntext, setbtntext] = useState("Update");
+    const [dis, setdis] = useState(false);
+
     const [formData, setFormData] = useState({
         name: '',
         age: '',
@@ -41,6 +46,16 @@ const page = () => {
           ...prevFormData,
           [name]: value,
         }));
+      };
+
+      
+      const handleClick = () => {
+        setbtntext(
+          <>
+            <Loader2 className="animate-spin" />
+            Please wait
+          </>
+        );
       };
     
       const handleSubmit = async (e) => {
@@ -85,8 +100,7 @@ const page = () => {
                     if (res.ok) {
                         router.push("/table");
                         router.refresh();
-                        document.getElementById("addBtn").setAttribute("disabled",true); 
-                        document.getElementById("addBtn").classList.add("disabled");  
+                        setdis(true);  
                         toast.success("Member Added Successfully", {
                             closeOnClick: true,
                             draggable: true,
@@ -136,9 +150,10 @@ const page = () => {
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="name">Name</Label>
                   <Input
-                    className="border-2 border-[#27272A] bg-[#18181A]"
+                    className="border-2 border-[#27272A] bg-[#18181A] py-6"
                     type="text"
                     id="name"
+                    required
                     placeholder="Enter Name"
                     onChange={handleChange}
                     name='name' value={formData.name}
@@ -147,9 +162,10 @@ const page = () => {
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="phone">Contact No.</Label>
                   <Input
-                    className="border-2 border-[#27272A] bg-[#18181A]"
+                    className="border-2 border-[#27272A] bg-[#18181A] py-6"
                     type="number"
                     id="phone"
+                    required
                     placeholder="Enter Contact"
                     onChange={handleChange}
                     name='phone' value={formData.phone}
@@ -158,7 +174,7 @@ const page = () => {
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="age">Age</Label>
                   <Input
-                    className="border-2 border-[#27272A] bg-[#18181A]"
+                    className="border-2 border-[#27272A] bg-[#18181A] py-6"
                     type="number"
                     id="age"
                     placeholder="Enter age"
@@ -175,7 +191,7 @@ const page = () => {
                     })
                   }
                   >
-                    <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A]" id="framework">
+                    <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A] py-6" id="framework">
                       <SelectValue
                         placeholder="Select"
                       />
@@ -196,7 +212,7 @@ const page = () => {
                       })
                     }
                   >
-                    <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A]" id="framework">
+                    <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A] py-6" id="framework">
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
                     <SelectContent position="popper">
@@ -209,7 +225,14 @@ const page = () => {
               {/* <Button id="addBtn">Update</Button> */}
               <div className="flex justify-between mt-5">
         <div></div>
-        <Button id="addBtn">Submit</Button>
+        <Button
+                  className="p-6"
+                  id="addBtn"
+                  disabled={dis}
+                  onClick={handleClick}
+                >
+                  {btntext}
+                </Button>
       </div>
             </form>
           </CardContent>

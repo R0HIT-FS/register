@@ -23,8 +23,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import { Loader2 } from "lucide-react";
+
 const EditForm = ({ data }) => {
   const router = useRouter();
+  const [btntext, setbtntext] = useState("Update");
+  const [dis, setdis] = useState(false);
 
   const [formData, setFormData] = useState({
     newName: data.name,
@@ -40,6 +44,15 @@ const EditForm = ({ data }) => {
       ...prevFormData,
       [name]: value,
     }));
+  };
+
+  const handleClick = () => {
+    setbtntext(
+      <>
+        <Loader2 className="animate-spin" />
+        Please wait
+      </>
+    );
   };
 
   const handleSubmit = async (e) => {
@@ -93,8 +106,9 @@ const EditForm = ({ data }) => {
           if (res.ok) {
             router.push("/");
             router.refresh();
-            document.getElementById("addBtn").setAttribute("disabled", true);
-            document.getElementById("addBtn").classList.add("disabled");
+            // document.getElementById("addBtn").setAttribute("disabled", true);
+            // document.getElementById("addBtn").classList.add("disabled");
+            setdis(true);
             toast.info("Updated Member Successfully", {
               closeOnClick: true,
               draggable: true,
@@ -110,6 +124,7 @@ const EditForm = ({ data }) => {
       console.log(error);
     }
   };
+
   return (
     <div className="p-10 min-h-screen bg-[#09090B]">
       <h1 className="text-lg md:text-2xl mb-5 md:mb-10 font-medium text-center text-white">
@@ -135,9 +150,7 @@ const EditForm = ({ data }) => {
         <Card className=" w-full sm:[350px] md:w-[350px] bg-transparent text-white border-2 border-[#27272A] ">
           <CardHeader>
             <CardTitle>EDIT FORM</CardTitle>
-            <CardDescription>
-              
-            </CardDescription>
+            <CardDescription></CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit}>
@@ -145,7 +158,7 @@ const EditForm = ({ data }) => {
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="name">Name</Label>
                   <Input
-                    className="border-2 border-[#27272A] bg-[#18181A]"
+                    className="border-2 border-[#27272A] bg-[#18181A] py-6"
                     type="text"
                     id="name"
                     placeholder="Enter Name"
@@ -157,7 +170,7 @@ const EditForm = ({ data }) => {
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="phone">Contact No.</Label>
                   <Input
-                    className="border-2 border-[#27272A] bg-[#18181A]"
+                    className="border-2 border-[#27272A] bg-[#18181A] py-6"
                     type="number"
                     id="phone"
                     placeholder="Enter Contact"
@@ -169,7 +182,7 @@ const EditForm = ({ data }) => {
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="age">Age</Label>
                   <Input
-                    className="border-2 border-[#27272A] bg-[#18181A]"
+                    className="border-2 border-[#27272A] bg-[#18181A] py-6"
                     type="number"
                     id="age"
                     placeholder="Enter Age"
@@ -180,17 +193,20 @@ const EditForm = ({ data }) => {
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="framework">Gender</Label>
-                  <Select  name="newGender" value={formData.newGender}
-                  onValueChange={(value) =>
-                    handleChange({
-                      target: { name: "newGender", value },
-                    })
-                  }
+                  <Select
+                    name="newGender"
+                    value={formData.newGender}
+                    onValueChange={(value) =>
+                      handleChange({
+                        target: { name: "newGender", value },
+                      })
+                    }
                   >
-                    <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A]" id="framework">
-                      <SelectValue
-                        placeholder="Select Gender"
-                      />
+                    <SelectTrigger
+                      className="border-2 border-[#27272A] bg-[#18181A] py-6"
+                      id="framework"
+                    >
+                      <SelectValue placeholder="Select Gender" />
                     </SelectTrigger>
                     <SelectContent position="popper">
                       <SelectItem value="Male">Male</SelectItem>
@@ -209,7 +225,10 @@ const EditForm = ({ data }) => {
                       })
                     }
                   >
-                    <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A]" id="framework">
+                    <SelectTrigger
+                      className="border-2 border-[#27272A] bg-[#18181A] py-6"
+                      id="framework"
+                    >
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
                     <SelectContent position="popper">
@@ -221,9 +240,16 @@ const EditForm = ({ data }) => {
               </div>
               {/* <Button id="addBtn">Update</Button> */}
               <div className="flex justify-between mt-5">
-        <div></div>
-        <Button id="addBtn">Update</Button>
-      </div>
+                <div></div>
+                <Button
+                  className="p-6"
+                  id="addBtn"
+                  disabled={dis}
+                  onClick={handleClick}
+                >
+                  {btntext}
+                </Button>
+              </div>
             </form>
           </CardContent>
         </Card>
