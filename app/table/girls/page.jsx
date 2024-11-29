@@ -6,6 +6,7 @@ import TableHeader from "../../Components/TableHeader";
 import dynamic from "next/dynamic";
 import Switch from "@/app/Components/Switch";
 import GenderTabs from "@/app/Components/GenderTabs";
+import View from "@/app/Components/View";
 
 const TableCard = dynamic(() => import('../../Components/TableCard'), {
   loading: () => <div className='w-full animate-pulse flex items-center justify-start bg-gray-100 rounded-lg p-4'><p>Loading...</p></div>,
@@ -44,19 +45,7 @@ const page = async ({ searchParams }) => {
       <AddMemberTable/>
       <GenderTabs tab1link={"table"} tab2link={"table/boys"} tab3={"tab"} data={girls}/>
       <TableHeader/>
-      <div className="flex flex-col-reverse">
-
-
-      {filteredMembers.length > 0 ? (
-        filteredMembers.map((user, i) => {
-          return (
-            <TableCard key={i} user={user}/>
-          );
-        })
-      ) : (
-        <p className="capitalize">No members added yet!</p>
-      )}
-            </div>
+      <View grid={"false"} filteredMembers={filteredMembers}/>
     </div>
   );
 };

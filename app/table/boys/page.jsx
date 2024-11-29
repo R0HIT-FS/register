@@ -6,11 +6,15 @@ import dynamic from "next/dynamic";
 import Switch from "../../Components/Switch";
 import AddMemberTable from "../../Components/AddMemberTable";
 import GenderTabs from "@/app/Components/GenderTabs";
-const TableCard = dynamic(() => import('../../Components/TableCard'), {
-  loading: () => <div className='w-full animate-pulse flex items-center justify-start bg-gray-100 rounded-lg p-4'><p>Loading...</p></div>,
+import View from "@/app/Components/View";
+const TableCard = dynamic(() => import("../../Components/TableCard"), {
+  loading: () => (
+    <div className="w-full animate-pulse flex items-center justify-start bg-gray-100 rounded-lg p-4">
+      <p>Loading...</p>
+    </div>
+  ),
   ssr: false,
 });
-
 
 const getMembers = async () => {
   try {
@@ -31,31 +35,24 @@ const page = async ({ searchParams }) => {
   const data = await getMembers();
   const query = searchParams?.query || "";
 
-  const boys = data.filter((boy)=>boy.gender.toLowerCase()=="male")
+  const boys = data.filter((boy) => boy.gender.toLowerCase() == "male");
 
-  const filteredMembers = boys.filter(member =>
+  const filteredMembers = boys.filter((member) =>
     member.name.toLowerCase().includes(query.toLowerCase())
   );
   return (
     <div className="p-5 md:p-10 flex flex-col min-h-screen bg-[#09090B]">
       <Search />
-      <Switch gridlink={"boys"} tablelink={"table/boys"}/>
-      <AddMemberTable/>
-      <GenderTabs tab1link={"table"} tab2={"tab"} tab3link={"table/girls"} data={boys}/>
-<TableHeader/>
-      <div className="flex flex-col-reverse">
-
-
-      {filteredMembers.length > 0 ? (
-        filteredMembers.map((user, i) => {
-          return (
-           <TableCard key={i} user={user}/>
-          );
-        })
-      ) : (
-        <p className="capitalize">No members added yet!</p>
-      )}
-            </div>
+      <Switch gridlink={"boys"} tablelink={"table/boys"} />
+      <AddMemberTable />
+      <GenderTabs
+        tab1link={"table"}
+        tab2={"tab"}
+        tab3link={"table/girls"}
+        data={boys}
+      />
+      <TableHeader />
+      <View grid={"false"} filteredMembers={filteredMembers} />
     </div>
   );
 };

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Switch from './Components/Switch';
 import GenderTabs from "./Components/GenderTabs"
+import View from './Components/View';
 const MemberCard = dynamic(() => import('./Components/MemberCard'), {
   loading: () => <div className='sm:h-[30vw] md:h-[15vw] sm:w-[300px] w-[200px] h-[40vw] bg-zinc-200 rounded-lg animate-pulse'></div>,
   ssr: false,
@@ -44,13 +45,7 @@ const Page = async ({ searchParams }) => {
       <Switch gridlink={""} tablelink={"table"}/>
       <AddMember/>
       <GenderTabs tab1={"tab"} tab2link={"boys"} tab3link={"girls"} data={data}/>
-      <div className="min-h-screen relative flex flex-wrap-reverse md:flex-wrap items-end content-end md:content-start gap-4 justify-center">
-        {filteredMembers.length > 0 ? (
-          filteredMembers.map((user, i) => <MemberCard key={i} user={user} />)
-        ) : (
-          <h1 className='text-white'>No Members Added Yet!</h1>
-        )}
-      </div>
+      <View grid={"true"} filteredMembers={filteredMembers}/>
     </div>
   );
 };

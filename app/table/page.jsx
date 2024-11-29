@@ -3,11 +3,7 @@ import TableHeader from "../Components/TableHeader";
 import Search from "../Components/Search";
 import Link from "next/link";
 import AddMemberTable from "../Components/AddMemberTable";
-import dynamic from "next/dynamic";
-import Switch from "../Components/Switch";
-import GenderTabs from "../Components/GenderTabs";
-
-const TableCard = dynamic(() => import("../Components/TableCard"), {
+import dynamic from "next/dynamic";const TableCard = dynamic(() => import("../Components/TableCard"), {
   loading: () => (
     <div className="w-full animate-pulse flex items-center justify-start bg-zinc-500 mt-2 rounded-lg p-6">
       <p></p>
@@ -15,6 +11,11 @@ const TableCard = dynamic(() => import("../Components/TableCard"), {
   ),
   ssr: false,
 });
+import Switch from "../Components/Switch";
+import GenderTabs from "../Components/GenderTabs";
+import View from "../Components/View"
+
+
 
 const getMembers = async () => {
   try {
@@ -53,15 +54,7 @@ const page = async ({ searchParams }) => {
         data={data}
       />
       <TableHeader />
-      <div className="flex flex-col-reverse">
-        {filteredMembers.length > 0 ? (
-          filteredMembers.map((user, i) => {
-            return <TableCard user={user} key={i} />;
-          })
-        ) : (
-          <p className="capitalize">No members added yet!</p>
-        )}
-      </div>
+      <View grid={"false"} filteredMembers={filteredMembers}/>
     </div>
   );
 };
