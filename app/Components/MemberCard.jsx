@@ -86,7 +86,7 @@ const MemberCard = async({ user }) => {
     //   </div>
     // </div>
 
-    <Card className="w-[200px] sm:w-[300px] bg-transparent border-2 border-[#27272A]">
+    <Card className="card w-[200px] sm:w-[300px] bg-transparent border-2 border-[#27272A]">
     <CardHeader>
       <div className="flex justify-between">
     <Link href={`/${user._id}`}><CardTitle className="text-white text-2xl hover:text-muted">{user.name}</CardTitle></Link>

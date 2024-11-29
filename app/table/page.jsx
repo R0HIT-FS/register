@@ -5,7 +5,7 @@ import Link from "next/link";
 import AddMemberTable from "../Components/AddMemberTable";
 import dynamic from "next/dynamic";
 const TableCard = dynamic(() => import('../Components/TableCard'), {
-  loading: () => <div className='w-full animate-pulse flex items-center justify-start bg-gray-100 rounded-lg p-4'><p>Loading...</p></div>,
+  loading: () => <div className='w-full animate-pulse flex items-center justify-start bg-zinc-500 mt-2 rounded-lg p-6'><p></p></div>,
   ssr: false,
 });
 
@@ -37,7 +37,7 @@ const page = async ({ searchParams }) => {
     member.gender.toLowerCase().includes(query.toLowerCase())
   );
   return (
-    <div className="p-5 md:p-10 flex flex-col min-h-screen">
+    <div className="p-5 md:p-10 flex flex-col min-h-screen bg-[#09090B]">
     <Search />
     <div className="flex justify-between items-start">
     <div className="flex items-center gap-2 bg-gray-200 w-fit rounded-full mb-4 p-1">
@@ -47,9 +47,9 @@ const page = async ({ searchParams }) => {
       <AddMemberTable/>
     </div>
     <div className='mb-5 md:mb-10 flex justify-center md:justify-start items-center gap-4'>
-      <small className="md:text-md font-semibold px-4 py-1 bg-gray-500 text-white rounded-full">All({data.length})</small>
-      <Link href={"/table/boys"} ><small className='px-4 py-1 rounded-full bg-blue-500 text-white'>Boys</small></Link>
-      <Link href={"/table/girls"} ><small className='px-4 py-1 rounded-full bg-pink-500 text-white'>Girls</small></Link>
+      <small className="md:text-md font-semibold px-4 py-1 bg-transparent border-2 border-[#27272A] text-white rounded-full">All({data.length})</small>
+      <Link href={"/table/boys"} ><small className='px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white'>Boys</small></Link>
+      <Link href={"/table/girls"} ><small className='px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white'>Girls</small></Link>
     </div>
     <TableHeader/>
     <div className="flex flex-col-reverse">
