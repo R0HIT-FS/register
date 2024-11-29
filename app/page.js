@@ -4,7 +4,7 @@ import Search from './Components/Search';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 const MemberCard = dynamic(() => import('./Components/MemberCard'), {
-  loading: () => <div className='md:h-[15vw] md:w-[15vw] w-[60vw] h-[40vw] bg-zinc-200 rounded-lg animate-pulse'></div>,
+  loading: () => <div className='sm:h-[30vw] md:h-[15vw] sm:w-[300px] w-[200px] h-[40vw] bg-zinc-200 rounded-lg animate-pulse'></div>,
   ssr: false,
 });
 
@@ -37,7 +37,7 @@ const Page = async ({ searchParams }) => {
   );
 
   return (
-    <div className="p-5 md:p-10 w-full">
+    <div className="p-5 md:p-10 w-full bg-[#09090B]">
       <Search />
       <div className="flex justify-between items-start">
       <div className="flex items-center gap-2 bg-gray-200 w-fit rounded-full mb-4 p-1">
@@ -51,21 +51,21 @@ const Page = async ({ searchParams }) => {
       <AddMember/>
       </div>
       <div className="mb-5 md:mb-10 flex justify-center md:justify-start items-center gap-4">
-        <small className="md:text-md font-semibold px-4 py-1 bg-gray-500 text-white rounded-full">
+        <small className="md:text-md font-semibold px-4 py-1 bg-transparent border-2 border-[#27272A] text-white rounded-full">
           All({data.length})
         </small>
         <Link href="/boys">
-          <small className="px-4 py-1 rounded-full bg-blue-500 text-white">Boys</small>
+          <small className="px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white">Boys</small>
         </Link>
         <Link href="/girls">
-          <small className="px-4 py-1 rounded-full bg-pink-500 text-white">Girls</small>
+          <small className="px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white">Girls</small>
         </Link>
       </div>
       <div className="min-h-screen relative flex flex-wrap-reverse md:flex-wrap items-end content-end md:content-start gap-4 justify-center">
         {filteredMembers.length > 0 ? (
           filteredMembers.map((user, i) => <MemberCard key={i} user={user} />)
         ) : (
-          <h1>No Members Added Yet!</h1>
+          <h1 className='text-white'>No Members Added Yet!</h1>
         )}
       </div>
     </div>

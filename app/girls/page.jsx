@@ -5,7 +5,7 @@ import AddMember from '../Components/AddMember';
 import Search from '../Components/Search';
 import dynamic from 'next/dynamic';
 const MemberCard = dynamic(() => import('../Components/MemberCard'), {
-  loading: () => <div className='md:h-[15vw] md:w-[15vw] w-[60vw] h-[40vw] bg-zinc-200 rounded-lg'></div>,
+  loading: () => <div className='sm:h-[30vw] md:h-[15vw] sm:w-[300px] w-[200px] h-[40vw] bg-zinc-200 rounded-lg'></div>,
   ssr: false,
 });
 
@@ -40,7 +40,7 @@ const page = async({searchParams}) => {
     member.name.toLowerCase().includes(query.toLowerCase())
   );
   return (
-    <div className="p-5 md:p-10">
+    <div className="p-5 md:p-10 bg-[#09090B]">
       <Search/>
       <div className="flex justify-between items-start">
       <div className="flex items-center gap-2 bg-gray-200 w-fit rounded-full mb-4 p-1">
@@ -50,9 +50,9 @@ const page = async({searchParams}) => {
       <AddMember/>
       </div>
         <div className='mb-5 md:mb-10 flex justify-center md:justify-start items-center gap-4'>
-      <Link href={"/"} ><small className='px-4 py-1 rounded-full bg-gray-500 text-white'>All</small></Link>
-      <Link href={"/boys"} ><small className='px-4 py-1 rounded-full bg-blue-500 text-white'>Boys</small></Link>
-      <small className="md:text-md font-semibold px-4 py-1 bg-pink-500 text-white rounded-full">Girls({girls.length})</small>
+      <Link href={"/"} ><small className='px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white'>All</small></Link>
+      <Link href={"/boys"} ><small className='px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white'>Boys</small></Link>
+      <small className="md:text-md font-semibold px-4 py-1 bg-transparent border-2 border-[#27272A] text-white rounded-full">Girls({girls.length})</small>
     </div>
     <div className="min-h-screen relative flex flex-wrap-reverse md:flex-wrap items-end content-end md:content-start gap-4 justify-center">
       {filteredMembers?.length>0?
@@ -62,7 +62,7 @@ const page = async({searchParams}) => {
               })
               
       :
-      <h1>No Members Added Yet!</h1>
+      <h1 className='text-white'>No Members Added Yet!</h1>
       }
 
     </div>
