@@ -5,6 +5,7 @@ import AddMemberTable from "../../Components/AddMemberTable";
 import TableHeader from "../../Components/TableHeader";
 import dynamic from "next/dynamic";
 import Switch from "@/app/Components/Switch";
+import GenderTabs from "@/app/Components/GenderTabs";
 
 const TableCard = dynamic(() => import('../../Components/TableCard'), {
   loading: () => <div className='w-full animate-pulse flex items-center justify-start bg-gray-100 rounded-lg p-4'><p>Loading...</p></div>,
@@ -41,21 +42,7 @@ const page = async ({ searchParams }) => {
       <Search />
       <Switch gridlink={`girls`} tablelink={`table/girls`}/>
       <AddMemberTable/>
-      <div className="mb-5 md:mb-10 flex justify-center md:justify-start items-center gap-4">
-        <Link href={"/table"}>
-          <small className="px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white">
-            All
-          </small>
-        </Link>
-        <Link href={"/table/boys"}>
-          <small className="px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white">
-            Boys
-          </small>
-        </Link>
-        <small className="md:text-md font-semibold px-4 py-1 bg-transparent border-2 border-[#27272A] text-white rounded-full">
-          Girls({girls.length})
-        </small>
-      </div>
+      <GenderTabs tab1link={"table"} tab2link={"table/boys"} tab3={"tab"} data={girls}/>
       <TableHeader/>
       <div className="flex flex-col-reverse">
 

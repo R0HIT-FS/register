@@ -5,6 +5,7 @@ import AddMember from '../Components/AddMember';
 import Search from '../Components/Search';
 import dynamic from 'next/dynamic';
 import Switch from "@/app/Components/Switch";
+import GenderTabs from '../Components/GenderTabs';
 const MemberCard = dynamic(() => import('../Components/MemberCard'), {
   loading: () => <div className='sm:h-[30vw] md:h-[15vw] sm:w-[300px] w-[200px] h-[40vw] bg-zinc-200 rounded-lg'></div>,
   ssr: false,
@@ -45,11 +46,7 @@ const page = async({searchParams}) => {
       <Search/>
       <Switch gridlink={"girls"} tablelink={"table/girls"}/>
       <AddMember/>
-        <div className='mb-5 md:mb-10 flex justify-center md:justify-start items-center gap-4'>
-      <Link href={"/"} ><small className='px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white'>All</small></Link>
-      <Link href={"/boys"} ><small className='px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white'>Boys</small></Link>
-      <small className="md:text-md font-semibold px-4 py-1 bg-transparent border-2 border-[#27272A] text-white rounded-full">Girls({girls.length})</small>
-    </div>
+    <GenderTabs tab1link={"/"} tab2link={"boys"} tab3={"tab"} data={girls}/>
     <div className="min-h-screen relative flex flex-wrap-reverse md:flex-wrap items-end content-end md:content-start gap-4 justify-center">
       {filteredMembers?.length>0?
             

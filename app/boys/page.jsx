@@ -5,6 +5,7 @@ import Search from "../Components/Search";
 import Switch from "../Components/Switch";
 
 import dynamic from 'next/dynamic';
+import GenderTabs from "../Components/GenderTabs";
 const MemberCard = dynamic(() => import('../Components/MemberCard'), {
   loading: () => <div className='sm:h-[30vw] md:h-[15vw] sm:w-[300px] w-[200px] h-[40vw] bg-zinc-200 rounded-lg'></div>,
   ssr: false,
@@ -42,21 +43,7 @@ const page = async ({ searchParams }) => {
       <Search />
       <Switch gridlink={"boys"} tablelink={"table/boys"}/>
       <AddMember />
-      <div className="mb-5 md:mb-10 flex justify-center md:justify-start items-center gap-4">
-        <Link href={"/"}>
-          <small className="px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white">
-            All
-          </small>
-        </Link>
-        <small className="md:text-md font-semibold px-4 py-1 bg-transparent border-2 border-[#27272A] text-white rounded-full">
-          Boys({boys?.length})
-        </small>
-        <Link href={"/girls"}>
-          <small className="px-4 py-1 rounded-full bg-[#27272A] border-2 border-[#27272A] text-white">
-            Girls
-          </small>
-        </Link>
-      </div>
+      <GenderTabs tab1link={"/"} tab2={"tab"} tab3link={"girls"} data={boys}/>
       <div className="min-h-screen relative flex flex-wrap-reverse md:flex-wrap items-end content-end md:content-start gap-4 justify-center">
         {filteredMembers.length > 0 ? (
           filteredMembers.map((user, i) => {
