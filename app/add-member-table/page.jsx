@@ -29,7 +29,7 @@ import { Loader2 } from "lucide-react";
 const page = () => {
     const router = useRouter();
 
-    const [btntext, setbtntext] = useState("Update");
+    const [btntext, setbtntext] = useState("Submit");
     const [dis, setdis] = useState(false);
 
     const [formData, setFormData] = useState({
@@ -69,6 +69,8 @@ const page = () => {
     
             if (phone.length < 10 || age < 0 || age == "") {
                 alert("Invalid Contact no. or Age!");
+                setbtntext("Submit");
+        setdis(false);
             } else {
                 // Check if the exact user already exists
                 const checkRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?name=${encodeURIComponent(formData.name)}`);
@@ -90,6 +92,8 @@ const page = () => {
                         theme: "dark",
                         autoClose: 3000,
                     });
+                    setbtntext("Submit");
+                    setdis(false);
                 } else {
                     // Proceed with adding the new user
                     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`, {
@@ -111,11 +115,15 @@ const page = () => {
                         });
                     } else {
                         throw new Error("Failed to create user!");
+                        setbtntext("Submit");
+        setdis(false);
                     }
                 }
             }
         } catch (error) {
             console.log(error);
+            setbtntext("Submit");
+        setdis(false);
         }
     };
   return (

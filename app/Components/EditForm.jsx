@@ -66,6 +66,8 @@ const EditForm = ({ data }) => {
 
       if (phone.length < 10 || age < 0 || age == "") {
         alert("Contact No. or Age Invalid!");
+        setbtntext("Update");
+        setdis(false);
       } else {
         
         // Check if a user with the new name already exists, excluding the current user
@@ -94,6 +96,8 @@ const EditForm = ({ data }) => {
             theme: "dark",
             autoClose: 3000,
           });
+          setbtntext("Update");
+          setdis(false);
         } else {
           // Proceed with updating the user
           const res = await fetch(
@@ -121,11 +125,15 @@ const EditForm = ({ data }) => {
             });
           } else {
             throw new Error("Failed to update user!");
+        //     setbtntext("Update");
+        // setdis(false);
           }
         }
       }
     } catch (error) {
       console.log(error);
+      setbtntext("Update");
+        setdis(false);
     }
   };
 
