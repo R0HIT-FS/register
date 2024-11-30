@@ -86,11 +86,11 @@ const MemberCard = async({ user }) => {
     //   </div>
     // </div>
 
-    <Card className="card w-[200px] sm:w-[300px] bg-transparent border-2 border-[#27272A]">
+    <Card className="card w-full sm:w-[300px] bg-transparent border-2 border-[#27272A] relative">
     <CardHeader>
-      <div className="flex justify-between">
-    <Link href={`/${user._id}`}><CardTitle className="text-white text-2xl hover:text-muted">{user.name}</CardTitle></Link>
-    <span className={`flex h-2 w-2 translate-y-1 rounded-full ${user.paid.toLowerCase() === "yes"? "bg-green-500": "bg-red-500"} `} title={user.paid.toLowerCase() === "yes"? "Paid" : "Pending"} />
+      <div className="flex justify-start">
+    <Link href={`/${user._id}`}><CardTitle className="text-white text-2xl hover:text-muted break-words">{user.name}</CardTitle></Link>
+    <span className={`flex h-2 w-2 translate-y-1 rounded-full absolute top-5 right-5 ${user.paid.toLowerCase() === "yes"? "bg-green-500": "bg-red-500"} `} title={user.paid.toLowerCase() === "yes"? "Paid" : "Pending"} />
       </div>
       <CardDescription>{user.age}, {user.gender}</CardDescription>
     </CardHeader>

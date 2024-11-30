@@ -42,7 +42,7 @@ export default function DeleteCollection() {
     };
 
     return (
-        <div className='min-h-[100dvh] w-full flex flex-col gap-5 justify-start items-center p-10 bg-[#09090B]'>
+        <div className='min-h-[100svh] w-full flex flex-col gap-5 justify-start items-center p-10 bg-[#09090B]'>
             <h1 className='font-semibold text-lg text-white'>Please contact the Database owner for the Collection name</h1>
             <Input
                 type="text"
