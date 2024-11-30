@@ -36,8 +36,8 @@ const TableCard = ({user}) => {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="m-[15px] sm:m-[0px] md:m-[0px]">Cancel</AlertDialogCancel>
-          <AlertDialogAction className="bg-transparent hover:bg-transparent"><DeleteButton id={user._id} /></AlertDialogAction>
+          <AlertDialogCancel className="m-[15px] sm:m-[0px] md:m-[0px] py-5 bg-transparent md:border-none text-white">Cancel</AlertDialogCancel>
+          <AlertDialogAction className="bg-transparent hover:bg-transparent py-5"><DeleteButton id={user._id} /></AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog></div>
