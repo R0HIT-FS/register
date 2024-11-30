@@ -2,7 +2,9 @@
 import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
+import { useToast } from "@/hooks/use-toast"
+
 
 import { Button } from "@/components/ui/button";
 import {
@@ -27,6 +29,9 @@ import { Loader2 } from "lucide-react";
 
 const EditForm = ({ data }) => {
   const router = useRouter();
+
+  const { toast } = useToast()
+
   const [btntext, setbtntext] = useState("Update");
   const [dis, setdis] = useState(false);
 
@@ -55,6 +60,25 @@ const EditForm = ({ data }) => {
     );
     setdis(true)
   };
+
+  function handleToast(){
+    toast({
+      title: "Updated Member Successfully",
+      description: "Cheers!",
+      className: 'z-[100] bg-blue-500 border-none',
+      duration: 3000,
+    })
+  }
+
+  function handleError(){
+    toast({
+      title: "Another user with this exact name already exists!",
+      description: "Please try again.",
+      variant:"destructive",
+      className: 'z-[100] bg-yellow-500 text-black',
+      duration: 3000,
+    })
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,12 +114,13 @@ const EditForm = ({ data }) => {
 
 
         if (exactMatch) {
-          toast.warn("Another user with this exact name already exists!", {
-            closeOnClick: true,
-            draggable: true,
-            theme: "dark",
-            autoClose: 3000,
-          });
+          // toast.warn("Another user with this exact name already exists!", {
+          //   closeOnClick: true,
+          //   draggable: true,
+          //   theme: "dark",
+          //   autoClose: 3000,
+          // });
+          handleError();
           setbtntext("Update");
           setdis(false);
         } else {
@@ -117,12 +142,13 @@ const EditForm = ({ data }) => {
             // document.getElementById("addBtn").setAttribute("disabled", true);
             // document.getElementById("addBtn").classList.add("disabled");
             // setdis(true);
-            toast.info("Updated Member Successfully", {
-              closeOnClick: true,
-              draggable: true,
-              theme: "dark",
-              autoClose: 3000,
-            });
+            // toast.info("Updated Member Successfully", {
+            //   closeOnClick: true,
+            //   draggable: true,
+            //   theme: "dark",
+            //   autoClose: 3000,
+            // });
+            handleToast();
           } else {
             throw new Error("Failed to update user!");
         //     setbtntext("Update");

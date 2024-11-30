@@ -3,7 +3,7 @@ import React from 'react'
 
 const OverlayMenu = ({isOpen,toggleNavbar}) => {
   return (
-    <div className={`transition w-full h-screen bg-yellow-100 absolute top-0 left-0 z-20 ${isOpen ? "open":"overlaymenu"}`}>
+    <div className={`transition w-full h-screen bg-yellow-100 absolute top-0 left-0 z-[101] ${isOpen ? "open":"overlaymenu"}`}>
             <div className="flex w-full p-5 justify-between items-center md:px-10" >
         <div className="text-3xl font-bold uppercase"><h1>registration</h1></div>
         <div>

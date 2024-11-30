@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { IoMdArrowBack } from "react-icons/io";
 import Link from 'next/link';
 
+import { useToast } from "@/hooks/use-toast"
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -28,6 +30,8 @@ import { Loader2 } from "lucide-react";
 
 const page = () => {
     const router = useRouter();
+
+    const { toast } = useToast();
 
     const [btntext, setbtntext] = useState("Submit");
     const [dis, setdis] = useState(false);
@@ -58,6 +62,25 @@ const page = () => {
         );
         setdis(true)
       };
+
+      function handleToast(){
+        toast({
+          title: "Member Added Successfully",
+          description: "Cheers!",
+          className: 'z-[100] bg-green-500 border-none',
+          duration: 3000,
+        })
+      }
+    
+      function handleError(){
+        toast({
+          title: "Another user with this exact name already exists!",
+          description: "Please try again.",
+          variant:"destructive",
+          className: 'z-[100] bg-red-500 text-white',
+          duration: 3000,
+        })
+      }
     
       const handleSubmit = async (e) => {
         e.preventDefault();
@@ -86,12 +109,13 @@ const page = () => {
                 
     
                 if (exactMatch) {
-                    toast.error("User with this exact name already exists!", {
-                        closeOnClick: true,
-                        draggable: true,
-                        theme: "dark",
-                        autoClose: 3000,
-                    });
+                    // toast.error("User with this exact name already exists!", {
+                    //     closeOnClick: true,
+                    //     draggable: true,
+                    //     theme: "dark",
+                    //     autoClose: 3000,
+                    // });
+                    handleError();
                     setbtntext("Submit");
                     setdis(false);
                 } else {
@@ -107,12 +131,13 @@ const page = () => {
                         router.push("/table");
                         router.refresh();
                         // setdis(true);  
-                        toast.success("Member Added Successfully", {
-                            closeOnClick: true,
-                            draggable: true,
-                            theme: "dark",
-                            autoClose: 3000,
-                        });
+                        // toast.success("Member Added Successfully", {
+                        //     closeOnClick: true,
+                        //     draggable: true,
+                        //     theme: "dark",
+                        //     autoClose: 3000,
+                        // });
+                        handleToast();
                     } else {
                         throw new Error("Failed to create user!");
                         setbtntext("Submit");

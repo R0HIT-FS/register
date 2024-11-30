@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import { ToastContainer } from "./Toast";
 import 'react-toastify/dist/ReactToastify.css';
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Outfit({ subsets: ["latin"], weight:["100","200","300","400","500","600","700","800","900"] 
 });
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
         <Navbar/>
         {children}
         <ToastContainer/>
+        <Toaster/>
         <Footer/>
         </body>
     </html>
