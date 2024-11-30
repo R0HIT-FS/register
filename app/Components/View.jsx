@@ -2,7 +2,7 @@ import React from 'react'
 import dynamic from 'next/dynamic';
 
 const MemberCard = dynamic(() => import('../Components/MemberCard'), {
-    loading: () => <div className='sm:h-[30vw] md:h-[15vw] sm:w-[300px] w-[200px] h-[40vw] bg-zinc-200 rounded-lg animate-pulse'></div>,
+    loading: () => <div className='sm:h-[30vw] md:h-[15vw] sm:w-[300px] w-full h-[40vw] bg-zinc-200 rounded-lg animate-pulse'></div>,
     ssr: false,
   });
 
