@@ -1,6 +1,8 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 
 
@@ -40,17 +42,17 @@ export default function DeleteCollection() {
     };
 
     return (
-        <div className='h-screen w-full flex flex-col gap-5 justify-start items-center p-10'>
-            <h1 className='font-semibold text-lg'>Please contact the Database owner for the Collection name</h1>
-            <input
+        <div className='min-h-[100svh] w-full flex flex-col gap-5 justify-start items-center p-10 bg-[#09090B]'>
+            <h1 className='font-semibold text-lg text-white'>Please contact the Database owner for the Collection name</h1>
+            <Input
                 type="text"
                 value={collectionName}
                 onChange={(e) => setCollectionName(e.target.value)}
                 placeholder="Enter Collection Name"
                 style={{ marginRight: '10px' }}
-                 className='px-4 py-2 rounded-lg border-2 border-zinc-300'
+                 className='px-4 py-6 rounded-lg border-2 border-zinc-300 text-white w-full sm:w-[300px]'
             />
-            <button className='px-4 py-2 rounded-lg bg-red-500 text-white' onClick={handleDelete}>Delete Collection</button>
+            <Button className='px-4 py-2 rounded-lg bg-red-500 text-white' onClick={handleDelete}>Delete Collection</Button>
             {message && <p className='font-medium text-gray-500'>{message}</p>}
         </div>
     );
