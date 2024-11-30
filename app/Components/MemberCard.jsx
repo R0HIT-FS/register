@@ -13,15 +13,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 
 import {
   Tooltip,
@@ -136,7 +138,24 @@ const MemberCard = async ({ user }) => {
             <span className="p-1 py-2 rounded-full">Edit</span>
           </Button>
         </Link>
-        <DeleteButton id={user._id} />
+        
+        <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button className="py-4 sm:py-2" variant="destructive">Del</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent className="bg-[#09090B] backdrop-blur-3xl border-[1px] border-[#27272A] w-full">
+        <AlertDialogHeader>
+          <AlertDialogTitle className="text-white">Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete the user from the server.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction className="bg-transparent hover:bg-transparent"><DeleteButton id={user._id} /></AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
       </CardFooter>
     </Card>
   );

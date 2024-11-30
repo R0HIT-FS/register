@@ -124,6 +124,10 @@ input[type=number] {
   color:black;
 }
 
+.margin{
+  margin:15px !important;
+}
+
 @layer base {
   :root {
     --background:0 0% 100%;
