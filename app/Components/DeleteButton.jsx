@@ -20,7 +20,7 @@ const DeleteButton = ({id}) => {
   return (
     <div title='Delete' onClick={del} className='w-full'>
     {/* <MdClose size={"1em"}/> */}
-    <Button className="py-4 sm:py-2 w-full" variant="destructive">Del</Button>
+    <Button className="py-4 sm:py-2 w-full" variant="destructive">Delete</Button>
     </div>
   )
 }

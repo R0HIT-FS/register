@@ -151,7 +151,7 @@ const MemberCard = async ({ user }) => {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel className="m-[15px] sm:m-[0px] md:m-[0px]">Cancel</AlertDialogCancel>
           <AlertDialogAction className="bg-transparent hover:bg-transparent"><DeleteButton id={user._id} /></AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
