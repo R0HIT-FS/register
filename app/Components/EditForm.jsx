@@ -75,6 +75,16 @@ const EditForm = ({ data }) => {
       title: "Another user with this exact name already exists!",
       description: "Please try again.",
       variant:"destructive",
+      className: 'z-[100] bg-red-500 text-white',
+      duration: 3000,
+    })
+  }
+
+  function handleContact(){
+    toast({
+      title: "Contact No. or Age Invalid!",
+      description: "Please check.",
+      variant:"destructive",
       className: 'z-[100] bg-yellow-500 text-black',
       duration: 3000,
     })
@@ -89,7 +99,8 @@ const EditForm = ({ data }) => {
       const age = document.getElementById("age").value;
 
       if (phone.length < 10 || age < 0 || age == "") {
-        alert("Contact No. or Age Invalid!");
+        // alert("Contact No. or Age Invalid!");
+        handleContact();
         setbtntext("Update");
         setdis(false);
       } else {

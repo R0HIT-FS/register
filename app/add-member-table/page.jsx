@@ -81,6 +81,16 @@ const page = () => {
           duration: 3000,
         })
       }
+
+      function handleContact(){
+        toast({
+          title: "Contact No. or Age Invalid!",
+          description: "Please check.",
+          variant:"destructive",
+          className: 'z-[100] bg-yellow-500 text-black',
+          duration: 3000,
+        })
+      }
     
       const handleSubmit = async (e) => {
         e.preventDefault();
@@ -91,7 +101,8 @@ const page = () => {
             const age = document.getElementById("age").value;
     
             if (phone.length < 10 || age < 0 || age == "") {
-                alert("Invalid Contact no. or Age!");
+                // alert("Invalid Contact no. or Age!");
+                handleContact();
                 setbtntext("Submit");
         setdis(false);
             } else {
