@@ -4,7 +4,7 @@ import { MdEdit } from "react-icons/md";
 import { MdModeEdit } from "react-icons/md";
 import DeleteButton from "./DeleteButton";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -12,19 +12,25 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-const MemberCard = async({ user }) => {
+const MemberCard = async ({ user }) => {
   const colors = [
     "#EAE7E2",
     "#D7E2E8",
@@ -54,7 +60,6 @@ const MemberCard = async({ user }) => {
     return initials;
   }
   const initials = getInitials(user.name);
-
 
   return (
     // <div
@@ -87,20 +92,53 @@ const MemberCard = async({ user }) => {
     // </div>
 
     <Card className="card w-full sm:w-[300px] bg-transparent border-2 border-[#27272A] relative">
-    <CardHeader>
-      <div className="flex justify-start">
-    <Link href={`/${user._id}`}><CardTitle className="text-white text-2xl hover:text-muted break-words">{user.name}</CardTitle></Link>
-    <span className={`flex h-2 w-2 translate-y-1 rounded-full absolute top-5 right-5 ${user.paid.toLowerCase() === "yes"? "bg-green-500": "bg-red-500"} `} title={user.paid.toLowerCase() === "yes"? "Paid" : "Pending"} />
-      </div>
-      <CardDescription>{user.age}, {user.gender}</CardDescription>
-    </CardHeader>
-    <CardContent>
-    </CardContent>
-    <CardFooter className="flex justify-end sm:justify-end gap-2">
-    <Link title="Edit" href={`/edit/${user._id}`}><Button className="py-4 sm:py-2" variant="outline"><span className="p-1 py-2 rounded-full">Edit</span></Button></Link>
-      <DeleteButton id={user._id}/>
-    </CardFooter>
-  </Card>
+      <CardHeader>
+        <div className="flex justify-start">
+          <Link href={`/${user._id}`}>
+            <CardTitle className="text-white text-2xl hover:text-muted break-words">
+              {user.name}
+            </CardTitle>
+          </Link>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span
+                  className={`flex h-2 w-2 hover:h-[10px] hover:w-[10px] transition-all cursor-pointer translate-y-1 rounded-full absolute top-5 right-5 ${
+                    user.paid.toLowerCase() === "yes"
+                      ? "bg-green-500"
+                      : "bg-red-500"
+                  } `}
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                {/* <p>Add to library</p> */}
+                <p>
+                  {" "}
+                  Registration:{" "}
+                  {user.paid.toLowerCase() === "yes" ? (
+                    <span className="text-green-500 font-bold">Paid</span>
+                  ) : (
+                    <span className="text-red-500 font-bold">Pending</span>
+                  )}
+                </p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+        <CardDescription>
+          {user.age}, {user.gender}
+        </CardDescription>
+      </CardHeader>
+      <CardContent></CardContent>
+      <CardFooter className="flex justify-end sm:justify-end gap-2">
+        <Link title="Edit" href={`/edit/${user._id}`}>
+          <Button className="py-4 sm:py-2" variant="outline">
+            <span className="p-1 py-2 rounded-full">Edit</span>
+          </Button>
+        </Link>
+        <DeleteButton id={user._id} />
+      </CardFooter>
+    </Card>
   );
 };
 
