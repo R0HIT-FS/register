@@ -107,7 +107,8 @@ const page = () => {
         setdis(false);
             } else {
                 // Check if the exact user already exists
-                const checkRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?name=${encodeURIComponent(formData.name)}`);
+                // const checkRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?name=${encodeURIComponent(formData.name)}`);
+                const checkRes = await fetch(`https://register-pink.vercel.app/api/users?name=${encodeURIComponent(formData.name)}`);
                 const existingUser = await checkRes.json();
     
                 // Normalize names by removing spaces, punctuation, and making them lowercase
@@ -131,7 +132,8 @@ const page = () => {
         setdis(false);
                 } else {
                     // Proceed with adding the new user
-                    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`, {
+                    // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`, {
+                    const res = await fetch(`https://register-pink.vercel.app/api/users`, {
                         method: "POST",
                         headers: {
                             "Content-type": "application/json",
