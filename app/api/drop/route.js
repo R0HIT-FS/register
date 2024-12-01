@@ -3,7 +3,7 @@ import { connectToDb } from '../../../lib/db';
 import mongoose from 'mongoose';
 
 const setCorsHeaders = (res) => {
-    res.headers.set('Access-Control-Allow-Origin', 'https://register-pink.vercel.app'); // Your Vercel URL
+    res.headers.set('Access-Control-Allow-Origin', 'https://registration-kohl-ten.vercel.app'); // Your Vercel URL
     res.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
   };
