@@ -111,6 +111,7 @@ const page = () => {
                 const checkRes = await fetch(`${process.env.NEXT_FRONTEND_API_URL}/api/users?name=${encodeURIComponent(formData.name)}`);
                 const existingUser = await checkRes.json();
     
+                
                 // Normalize names by removing spaces, punctuation, and making them lowercase
                 const normalizeName = (name) => name.toLowerCase().replace(/[\s.]/g, '');
     
