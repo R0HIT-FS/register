@@ -107,7 +107,7 @@ const EditForm = ({ data }) => {
         
         // Check if a user with the new name already exists, excluding the current user
         const checkRes = await fetch(
-          `https://register-pink.vercel.app/api/users?name=${encodeURIComponent(formData.newName)}`
+          `${process.env.NEXT_FRONTEND_API_URL}/api/users?name=${encodeURIComponent(formData.newName)}`
           // `${process.env.NEXT_PUBLIC_API_URL}/api/users?name=${encodeURIComponent(formData.newName)}`
         );
         const existingUsers = await checkRes.json();
@@ -136,7 +136,7 @@ const EditForm = ({ data }) => {
         } else {
           // Proceed with updating the user
           const res = await fetch(
-            `https://register-pink.vercel.app/api/users/${data._id}`,
+            `${process.env.NEXT_FRONTEND_API_URL}/api/users/${data._id}`,
             // `${process.env.NEXT_PUBLIC_API_URL}/api/users/${data._id}`,
             {
               method: "PUT",
