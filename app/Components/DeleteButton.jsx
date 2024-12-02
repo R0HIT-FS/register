@@ -10,7 +10,8 @@ const DeleteButton = ({id}) => {
     const del=async()=>{
         // const confirmed = confirm("Are you sure you want to delete this member?")
         // if(confirmed){
-            await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?id=${id}`,{
+            // await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?id=${id}`,{
+            await fetch(`https://register-pink.vercel.app/api/users?id=${id}`,{
                 method:"DELETE"
             })
         // }
