@@ -142,7 +142,7 @@ const page = () => {
                         body: JSON.stringify(formData),
                     });
                     if (res.ok) {
-                        router.push("/table");
+                        router.push("/");
                         router.refresh();
                         // setdis(true);  
                         // toast.success("Member Added Successfully", {
