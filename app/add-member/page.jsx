@@ -142,7 +142,7 @@ const page = () => {
                     });
                     
                     if (res.ok) {
-                        router.push("/add-member");
+                        router.push("/add-member-table");
                         router.refresh();
                         // setdis(true);                       
                         // toast.success("Member Added Successfully", {
