@@ -292,6 +292,7 @@ const page = () => {
                     className="border-2 border-[#27272A] bg-[#18181A] py-6"
                     type="number"
                     id="age"
+                    required
                     placeholder="Enter age"
                     onChange={handleChange}
                     name='age' value={formData.age}
@@ -305,6 +306,7 @@ const page = () => {
                       target: { name: "gender", value },
                     })
                   }
+                  required
                   >
                     <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A] py-6" id="framework">
                       <SelectValue
@@ -326,6 +328,7 @@ const page = () => {
                         target: { name: "paid", value },
                       })
                     }
+                    required
                   >
                     <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A] py-6" id="framework">
                       <SelectValue placeholder="Select" />
