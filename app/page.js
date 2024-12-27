@@ -120,7 +120,7 @@ const page = () => {
       };
       function handleToast(){
         toast({
-          title: "Member Added Successfully",
+          title: "Registration Successful",
           description: "Cheers!",
           className: 'z-[100] bg-green-500 border-none',
           duration: 3000,
