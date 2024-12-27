@@ -147,15 +147,23 @@ const page = () => {
         })
       }
 
+      function onKeyDown(event) {
+        if (event.key === "Enter") {
+          console.log("Enter key pressed");
+          return null;
+        }
+        console.log("Other key pressed:", event.key);
+      }
+
       const handleSubmit = async (e) => {
         e.preventDefault();
         handleClick();
-    
+        document.getElementById("form").addEventListener("keydown", onKeyDown);
         try {
             const phone = document.getElementById("phone").value;
             const age = document.getElementById("age").value;
     
-            if (phone.length < 10 || age < 0 || age == "") {
+            if (phone.length !== 10 || age < 0 || age == "") {
                 // alert("Contact No. or Age Invalid!");
                 handleContact();
                 setbtntext("Submit");
@@ -197,7 +205,7 @@ const page = () => {
                     });
                     
                     if (res.ok) {
-                        router.push("/add-member-table");
+                        router.push("/submitted");
                         router.refresh();
                         // setdis(true);                       
                         // toast.success("Member Added Successfully", {
@@ -248,7 +256,7 @@ const page = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit}>
+            <form id="form" onSubmit={handleSubmit}>
               <div className="grid w-full items-center gap-4">
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="name">Name</Label>

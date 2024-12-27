@@ -31,7 +31,7 @@ const View = ({grid,table,filteredMembers}) => {
           return <TableCard user={user} key={i} />;
         })
       ) : (
-        <p className="capitalize">No members added yet!</p>
+        <p className="capitalize ">No members added yet!</p>
       )}
     </div>}
     </>
