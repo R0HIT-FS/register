@@ -233,7 +233,7 @@ const page = () => {
     
   return (
     <div className="p-5 md:p-10 min-h-screen bg-[#09090B]">
-      <Link href={"/"} className='inline-block mb-10'><p className='w-fit flex items-center gap-2  px-2 rounded-full hover:bg-[#18181B] text-white'><IoMdArrowBack /><span>Back To Home</span></p></Link>
+      {/* <Link href={"/"} className='inline-block mb-10'><p className='w-fit flex items-center gap-2  px-2 rounded-full hover:bg-[#18181B] text-white'><IoMdArrowBack /><span>Back To Home</span></p></Link> */}
     {/* <h1 className="text-2xl mb-5 md:mb-10 font-bold text-center text-white">Add A Member</h1>    */}
     <div className="flex justify-center items-center">
         {/* <form className="flex flex-col gap-2 items-start" action="" onSubmit={handleSubmit}>
@@ -254,7 +254,7 @@ const page = () => {
         </form> */}
         <Card className=" w-full sm:[350px] md:w-[350px] bg-transparent text-white border-2 border-[#27272A] ">
           <CardHeader>
-            <CardTitle>ADD A MEMBER</CardTitle>
+            <CardTitle>REGISTER</CardTitle>
             <CardDescription>
               
             </CardDescription>
