@@ -147,23 +147,21 @@ const page = () => {
         })
       }
 
-      function onKeyDown(event) {
-        if (event.key === "Enter") {
-          console.log("Enter key pressed");
-          return null;
+      const preventEnterKey = (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
         }
-        console.log("Other key pressed:", event.key);
-      }
+      };
 
       const handleSubmit = async (e) => {
         e.preventDefault();
         handleClick();
-        document.getElementById("form").addEventListener("keydown", (event) => {
-          if (event.key === "Enter") {
-            event.preventDefault();
-            return; // Prevent the Enter key's default action
-          }
-        });
+        // document.getElementById("form").addEventListener("keydown", (event) => {
+        //   if (event.key === "Enter") {
+        //     event.preventDefault();
+        //     return; // Prevent the Enter key's default action
+        //   }
+        // });
         try {
             const phone = document.getElementById("phone").value;
             const age = document.getElementById("age").value;
@@ -273,6 +271,7 @@ const page = () => {
                     placeholder="Enter Name"
                     onChange={handleChange}
                     name='name' value={formData.name}
+                    onKeyDown={preventEnterKey}
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
@@ -285,6 +284,7 @@ const page = () => {
                     placeholder="Enter Contact"
                     onChange={handleChange}
                     name='phone' value={formData.phone}
+                    onKeyDown={preventEnterKey}
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
@@ -297,6 +297,7 @@ const page = () => {
                     placeholder="Enter age"
                     onChange={handleChange}
                     name='age' value={formData.age}
+                    onKeyDown={preventEnterKey}
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
