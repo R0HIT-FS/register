@@ -160,7 +160,8 @@ const page = () => {
         handleClick();
         document.getElementById("form").addEventListener("keydown", (event) => {
           if (event.key === "Enter") {
-            event.preventDefault(); // Prevent the Enter key's default action
+            event.preventDefault();
+            return; // Prevent the Enter key's default action
           }
         });
         try {
@@ -328,12 +329,11 @@ const page = () => {
                         target: { name: "paid", value },
                       })
                     }
-                    required
                   >
-                    <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A] py-6" id="framework">
-                      <SelectValue placeholder="Select" />
+                    <SelectTrigger className="border-2 border-[#27272A] bg-[#18181A] py-6" id="framework" required>
+                      <SelectValue placeholder="Select" required />
                     </SelectTrigger>
-                    <SelectContent position="popper">
+                    <SelectContent position="popper" required>
                       <SelectItem value="Yes">Yes</SelectItem>
                       <SelectItem value="No">No</SelectItem>
                     </SelectContent>
