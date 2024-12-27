@@ -158,7 +158,11 @@ const page = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         handleClick();
-        document.getElementById("form").addEventListener("keydown", onKeyDown);
+        document.getElementById("form").addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault(); // Prevent the Enter key's default action
+          }
+        });
         try {
             const phone = document.getElementById("phone").value;
             const age = document.getElementById("age").value;
