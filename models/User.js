@@ -5,7 +5,8 @@ const userSchema = new Schema({
     phone:Number,
     age:Number,
     gender:String,
-    paid:String
+    paid:String,
+    transaction:Number
 })
 
 const User = mongoose.models.User || mongoose.model("User",userSchema);
