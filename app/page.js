@@ -352,7 +352,7 @@ const page = () => {
                       onChange={handleChange}
                       name="transaction"
                       value={formData.transaction}
-                      
+                      onKeyDown={preventEnterKey}
                       required
                     />
                   </div>
