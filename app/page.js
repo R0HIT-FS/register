@@ -98,7 +98,8 @@ const page = () => {
         age: '',
         phone: '',
         gender:"",
-        paid:""
+        paid:"",
+        transaction:""
       });
     
       const handleChange = (e) => {
@@ -340,6 +341,22 @@ const page = () => {
                     </SelectContent>
                   </Select>
                 </div>
+                {formData.paid == "Yes" && (
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="transaction">Last 4 digits of your UPI Transaction:</Label>
+                    <Input
+                      className="border-2 border-[#27272A] bg-[#18181A] py-6"
+                      type="number"
+                      id="transaction"
+                      placeholder="Enter here"
+                      onChange={handleChange}
+                      name="transaction"
+                      value={formData.transaction}
+                      max={4}
+                      required
+                    />
+                  </div>
+                )}
               </div>
               {/* <Button id="addBtn">Update</Button> */}
               <div className="flex justify-between mt-5">
