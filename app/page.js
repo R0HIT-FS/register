@@ -352,7 +352,7 @@ const page = () => {
                       onChange={handleChange}
                       name="transaction"
                       value={formData.transaction}
-                      max={4}
+                      
                       required
                     />
                   </div>
