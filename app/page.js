@@ -262,7 +262,7 @@ const page = () => {
         </form> */}
         <Card className=" w-full sm:[350px] md:w-[350px] bg-transparent text-white border-2 border-[#27272A] ">
           <CardHeader>
-            <CardTitle>REGISTER</CardTitle>
+            <CardTitle className="mb-2">REGISTER</CardTitle>
             <CardDescription className="w-full flex justify-center">
               <div className="w-full sm:w-[300px]">
                 <AspectRatio ratio={1 / 1}>
