@@ -6,6 +6,7 @@ const userSchema = new Schema({
     age:Number,
     gender:String,
     paid:String,
+    method:String,
     transaction:Number
 })
 
