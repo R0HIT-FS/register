@@ -6,7 +6,7 @@ const userSchema = new Schema({
     age:Number,
     gender:String,
     paid:String,
-    // transaction:Number
+    transaction:Number
 })
 
 const User = mongoose.models.User || mongoose.model("User",userSchema);

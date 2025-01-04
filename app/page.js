@@ -177,7 +177,7 @@ const page = () => {
         // Check if the exact user already exists
         // const checkRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?name=${encodeURIComponent(formData.name)}`);
         const checkRes = await fetch(
-          `https://register-the-bridge.vercel.app//api/users?name=${encodeURIComponent(
+          `https://register-the-bridge.vercel.app/api/users?name=${encodeURIComponent(
             formData.name
           )}`
         );
@@ -206,7 +206,7 @@ const page = () => {
           // Proceed with adding the new user
           // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`, {
           const res = await fetch(
-            `https://register-the-bridge.vercel.app//api/users`,
+            `https://register-the-bridge.vercel.app/api/users`,
             {
               method: "POST",
               headers: {
@@ -368,7 +368,7 @@ const page = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                {/* {formData.paid == "Yes" && (
+                {formData.paid == "Yes" && (
                   <div className="flex flex-col space-y-1.5">
                     <Label htmlFor="transaction">Last 4 digits of your UPI Transaction:</Label>
                     <Input
@@ -383,7 +383,7 @@ const page = () => {
                       required
                     />
                   </div>
-                )} */}
+                )}
               </div>
               {/* <Button id="addBtn">Update</Button> */}
               <div className="flex justify-between mt-5">
