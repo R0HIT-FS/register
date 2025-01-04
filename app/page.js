@@ -295,7 +295,7 @@ const page = () => {
                     type="number"
                     id="age"
                     required
-                    placeholder="Enter age"
+                    placeholder="Enter Age"
                     onChange={handleChange}
                     name='age' value={formData.age}
                     onKeyDown={preventEnterKey}
