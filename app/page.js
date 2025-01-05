@@ -410,7 +410,7 @@ const page = () => {
                 </div>)}
                 {formData.method == "Online" && (
                   <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="transaction">Last 4 digits of your UPI Transaction:</Label>
+                    <Label htmlFor="transaction">Last 4 digits of your UPI Transaction ID:</Label>
                     <Input
                       className="border-2 border-[#27272A] bg-[#18181A] py-6"
                       type="number"
