@@ -346,7 +346,8 @@ const page = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex justify-center mt-2 mb-2">
+                <div className="flex flex-col space-y-1.5 justify-center mt-2 mb-6">
+                  <p className="text-white">Please scan the QR below for Online payment:</p>
                 <div className="w-full  sm:w-[200px]">
                 <AspectRatio ratio={1 / 1}>
                   <Image
