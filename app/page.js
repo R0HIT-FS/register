@@ -85,6 +85,7 @@ import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import logo from "@/public/the-bridge.jpg"
+import qr from "@/public/harsha-qr.jpeg"
 
 const page = () => {
   const router = useRouter();
@@ -345,6 +346,18 @@ const page = () => {
                     </SelectContent>
                   </Select>
                 </div>
+                <div className="flex justify-center mt-2 mb-2">
+                <div className="w-full  sm:w-[200px]">
+                <AspectRatio ratio={1 / 1}>
+                  <Image
+                    src={qr}
+                    alt="Image"
+                    className="rounded-md object-cover"
+                  />
+                </AspectRatio>
+              </div>
+                </div>
+                
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="framework">Registration Fee Paid:</Label>
                   <Select
@@ -369,6 +382,7 @@ const page = () => {
                     </SelectContent>
                   </Select>
                 </div>
+  
                 {formData.paid== "Yes" && (<div className="flex flex-col space-y-1.5">
                   <Label htmlFor="framework">Payment Method:</Label>
                   <Select
